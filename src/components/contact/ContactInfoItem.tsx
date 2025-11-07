@@ -33,6 +33,7 @@ const ContactInfoItem = ({ item }: Props) => {
   return (
     <a
       href={href}
+      target="_blank"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="relative flex items-center p-4 

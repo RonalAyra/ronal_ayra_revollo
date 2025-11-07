@@ -6,9 +6,6 @@ const Footer = () => {
           <p className="text-black dark:text-white">
             © 2024 Ronal Ayra. Hecho con mucho ☕
           </p>
-          <p className="text-black dark:text-white text-sm mt-2">
-            Diseñado y desarrollado con React, TypeScript y Tailwind CSS
-          </p>
         </div>
       </div>
     </footer>

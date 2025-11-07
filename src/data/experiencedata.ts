@@ -161,10 +161,11 @@ export const experiences: Experience[] = [
       "Desarrollo de APIs RESTful con NestJS, integrando la comunicación entre cliente y servidor.",
     ],
     technologies: ["React.js", "Vue.js", "NestJS", "MongoDB"],
+    liveUrl: "https://ayra-4b7d7.web.app/",
   },
   {
     id: 15,
-    company: "K’anchay",
+    company: "Dynasys Srl",
     position: "Baremo Backend",
     period: "Agosto 2020 – Diciembre 2020",
     description: [

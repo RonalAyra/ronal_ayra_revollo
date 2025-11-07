@@ -4,13 +4,11 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   base: "/ronal_ayra_revollo/",
   plugins: [react()],
-  publicDir: "public",
-
+  publicDir: 'public',
   build: {
-    outDir: "dist",
-    assetsDir: "assets",
+    outDir: 'dist',
+    assetsDir: 'assets',
   },
-
   optimizeDeps: {
     exclude: ["lucide-react"],
   },

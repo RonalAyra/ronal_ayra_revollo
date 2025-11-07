@@ -33,6 +33,7 @@ const SocialIconItem = ({ item }: Props) => {
     <a
       key={label}
       href={href}
+      target="_blank"
       aria-label={label}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

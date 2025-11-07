@@ -1,41 +1,10 @@
-import React, { useState } from "react";
-import { Send, Mail, MessageCircle, User, Zap } from "lucide-react";
-import type { ContactFormData } from "../types";
+import { Mail, MessageCircle, User, Zap } from "lucide-react";
 import ContactInfoItem from "../components/contact/ContactInfoItem";
 import { contactInfoData, socialLinkData } from "../data/contactsdata";
 import SocialLinkItem from "../components/contact/SocialLinkItem";
-import InputField from "../components/contact/inputs/InputField";
-import InputTextArea from "../components/contact/inputs/inputTextArea";
 import DataCuriousItem from "../components/contact/DataCuriousItem";
 
 const Contact = () => {
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isFormFocused, setIsFormFocused] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    alert("🎉 Mensaje enviado correctamente. Te contactaré pronto!");
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleFormFocus = () => setIsFormFocused(true);
-  const handleFormBlur = () => setIsFormFocused(false);
-
   return (
     <section
       id="contact"
@@ -75,198 +44,114 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="relative">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
-                    <div className="relative w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-xl">
-                      <User
-                        size={24}
-                        className="group-hover:scale-110 transition-transform duration-300"
-                      />
+        <div className="max-w-4xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="space-y-8">
+              <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div>
+                <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="relative">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                      <div className="relative w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-xl">
+                        <User
+                          size={24}
+                          className="group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full border-2 border-white dark:border-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="w-full h-full bg-white/30 rounded-full animate-ping"></div>
+                      </div>
                     </div>
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full border-2 border-white dark:border-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="w-full h-full bg-white/30 rounded-full animate-ping"></div>
-                    </div>
+                    <h3 className="text-2xl font-bold text-black dark:text-white group-hover:translate-x-1 transition-transform duration-300">
+                      Información de Contacto
+                    </h3>
                   </div>
-                  <h3 className="text-2xl font-bold text-black dark:text-white group-hover:translate-x-1 transition-transform duration-300">
-                    Información de Contacto
-                  </h3>
-                </div>
-                <div className="space-y-4">
-                  {contactInfoData.map((info) => (
-                    <ContactInfoItem key={info.label} item={info} />
-                  ))}
+                  <div className="space-y-4">
+                    {contactInfoData.map((info) => (
+                      <ContactInfoItem key={info.label} item={info} />
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="relative">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
-                    <div className="relative w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-xl">
-                      <Zap
-                        size={24}
-                        className="group-hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-2 border-white dark:border-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="w-full h-full bg-white/30 rounded-full animate-ping"></div>
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-bold text-black dark:text-white group-hover:translate-x-1 transition-transform duration-300">
-                    Sígueme en
-                  </h3>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  {socialLinkData.map((item) => (
-                    <SocialLinkItem key={item.label} item={item} />
-                  ))}
-                </div>
-              </div>
-            </div>
-            <DataCuriousItem
-              item={{
-                title: "Respuesta Rápida Garantizada",
-                description:
-                  "Respondo todos los emails dentro de las primeras 24 horas. ¡Me encanta conectar con personas apasionadas por la tecnología y nuevos proyectos! Tu idea merece atención inmediata.",
-              }}
-            />
-          </div>
-          <div
-            className="relative group"
-            onFocus={handleFormFocus}
-            onBlur={handleFormBlur}
-          >
-            <div
-              className={`absolute -inset-1 bg-gradient-to-r from-gray-700 to-slate-900 rounded-2xl blur transition-all duration-1000 ${
-                isFormFocused ? "opacity-30" : "opacity-20"
-              }`}
-            ></div>
 
-            <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 dark:border-gray-700/50">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-gray-700 to-slate-900 rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
-                  <div className="relative w-12 h-12 bg-gradient-to-r from-gray-700 to-slate-900 rounded-xl flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-xl">
-                    <Mail
-                      size={24}
-                      className="group-hover:scale-110 transition-transform duration-300"
-                    />
+              <DataCuriousItem
+                item={{
+                  title: "Respuesta Rápida Garantizada",
+                  description:
+                    "Respondo todos los mensajes dentro de las primeras 24 horas. ¡Me encanta conectar con personas apasionadas por la tecnología y nuevos proyectos! Tu idea merece atención inmediata.",
+                }}
+              />
+            </div>
+            <div className="space-y-8">
+              <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div>
+                <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="relative">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                      <div className="relative w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-xl">
+                        <Zap
+                          size={24}
+                          className="group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-2 border-white dark:border-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="w-full h-full bg-white/30 rounded-full animate-ping"></div>
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-bold text-black dark:text-white group-hover:translate-x-1 transition-transform duration-300">
+                      Sígueme en
+                    </h3>
                   </div>
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-gray-700 to-slate-900 rounded-full border-2 border-white dark:border-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="w-full h-full bg-white/30 rounded-full animate-ping"></div>
+                  <div className="flex flex-wrap gap-3">
+                    {socialLinkData.map((item) => (
+                      <SocialLinkItem key={item.label} item={item} />
+                    ))}
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-black dark:text-white group-hover:translate-x-1 transition-transform duration-300">
-                    Envíame un Mensaje
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm mt-1 group-hover:translate-x-1 transition-transform duration-300 delay-100">
-                    Completa el formulario y me pondré en contacto contigo
+              </div>
+
+              <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div>
+                <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="relative">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                      <div className="relative w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-xl">
+                        <Mail
+                          size={24}
+                          className="group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-bold text-black dark:text-white">
+                      Contacto Directo
+                    </h3>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    ¿Listo para empezar tu proyecto? Contáctame directamente a
+                    través de WhatsApp o email para una comunicación más rápida
+                    y personalizada.
                   </p>
+                  <div className="flex flex-col gap-3">
+                    <a
+                      href="https://wa.me/59176441883"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    >
+                      <span>💬 Escribir por WhatsApp</span>
+                    </a>
+                    <a
+                      href="mailto:ronal.ayra.revollo@email.com"
+                      className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    >
+                      <span>📧 Enviar Email</span>
+                    </a>
+                  </div>
                 </div>
               </div>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <InputField
-                    id="name"
-                    name="name"
-                    label="Nombre"
-                    type="text"
-                    required
-                    placeholder="Tu nombre completo"
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
-
-                  <InputField
-                    id="email"
-                    name="email"
-                    label="Email"
-                    type="email"
-                    required
-                    placeholder="tu@email.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <InputField
-                  id="subject"
-                  name="subject"
-                  label="Asunto"
-                  type="text"
-                  required
-                  placeholder="¿En qué puedo ayudarte?"
-                  value={formData.subject}
-                  onChange={handleChange}
-                />
-
-                <InputTextArea
-                  id="message"
-                  name="message"
-                  label="Mensaje"
-                  rows={6}
-                  required
-                  placeholder="Cuéntame sobre tu proyecto, ideas o cualquier cosa en la que podamos colaborar..."
-                  value={formData.message}
-                  onChange={handleChange}
-                />
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="relative w-full bg-gradient-to-r from-gray-700 to-slate-900 text-white py-4 px-6 rounded-xl font-semibold hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none group/btn overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-slate-900 group-hover/btn:from-blue-600 group-hover/btn:to-cyan-600 transition-all duration-500"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-150%] group-hover/btn:translate-x-[150%] transition-transform duration-1000"></div>
-                  {!isSubmitting && (
-                    <>
-                      <div className="absolute top-2 left-4 w-1 h-1 bg-white rounded-full opacity-0 group-hover/btn:opacity-60 group-hover/btn:animate-ping"></div>
-                      <div className="absolute bottom-2 right-4 w-2 h-2 bg-white rounded-full opacity-0 group-hover/btn:opacity-40 group-hover/btn:animate-pulse delay-300"></div>
-                    </>
-                  )}
-                  <div className="relative z-10 flex items-center gap-3">
-                    {isSubmitting ? (
-                      <>
-                        <div className="relative w-5 h-5">
-                          <div className="absolute inset-0 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        </div>
-                        <span className="text-white font-semibold">
-                          Enviando...
-                        </span>
-                      </>
-                    ) : (
-                      <>
-                        <div className="relative">
-                          <Send 
-                            size={20} 
-                            className="text-white group-hover/btn:scale-110 group-hover/btn:-translate-y-0.5 transition-transform duration-300" 
-                          />
-                        </div>
-                        <span className="text-white font-semibold group-hover/btn:scale-105 transition-transform duration-300">
-                          Enviar Mensaje
-                        </span>
-                      </>
-                    )}
-                  </div>
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-white to-cyan-200 rounded-full transform scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500"></div>
-                  {!isSubmitting && (
-                    <div className="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                  )}
-                </button>
-              </form>
-              <p className="text-center text-gray-500 dark:text-gray-400 text-sm mt-6">
-                📍 Tu información está segura con nosotros. No compartimos datos
-                personales.
-              </p>
             </div>
           </div>
         </div>
