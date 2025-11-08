@@ -66,11 +66,12 @@ const TechnologiesItem = ({ item }: Props) => {
   const colorClass = getTechColor(item);
 
   return (
-    <span
-      key={item}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative px-4 py-2 
+    <div className="my-2">
+      <span
+        key={item}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="relative px-4 py-2
                  bg-white/80 dark:bg-gray-800/80 
                  backdrop-blur-sm 
                  rounded-full 
@@ -79,29 +80,30 @@ const TechnologiesItem = ({ item }: Props) => {
                  hover:shadow-lg 
                  transition-all duration-500 
                  group overflow-hidden"
-    >
-      <div
-        className={`absolute inset-0 bg-gradient-to-r ${colorClass} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full`}
-      ></div>
-      <div
-        className={`absolute -inset-1 bg-gradient-to-r ${colorClass} opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur rounded-full`}
-      ></div>
-      <span
-        className={`relative z-10 font-medium text-sm transition-colors duration-300 ${
-          isHovered ? "text-white" : "text-gray-700 dark:text-gray-300"
-        }`}
       >
-        {item}
+        <div
+          className={`absolute inset-0 bg-gradient-to-r ${colorClass} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full`}
+        ></div>
+        <div
+          className={`absolute -inset-1 bg-gradient-to-r ${colorClass} opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur rounded-full`}
+        ></div>
+        <span
+          className={`relative z-10 font-medium text-sm transition-colors duration-300 ${
+            isHovered ? "text-white" : "text-gray-700 dark:text-gray-300"
+          }`}
+        >
+          {item}
+        </span>
+        <div
+          className={`absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r ${colorClass} rounded-full transition-all duration-300 ${
+            isHovered ? "opacity-100 scale-100" : "opacity-0 scale-0"
+          }`}
+        ></div>
+        {isHovered && (
+          <div className="absolute inset-0 bg-white/20 rounded-full animate-ping"></div>
+        )}
       </span>
-      <div
-        className={`absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r ${colorClass} rounded-full transition-all duration-300 ${
-          isHovered ? "opacity-100 scale-100" : "opacity-0 scale-0"
-        }`}
-      ></div>
-      {isHovered && (
-        <div className="absolute inset-0 bg-white/20 rounded-full animate-ping"></div>
-      )}
-    </span>
+    </div>
   );
 };
 

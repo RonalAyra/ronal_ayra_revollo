@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "xcopy \"src\\assets\\3d\\hero\" \"public\\assets\" /E /I /Y && vite build && xcopy \"public\\assets\" \"dist\\assets\" /E /I /Y",
+    "build": "vite build && xcopy \"public\\assets\" \"dist\\assets\" /E /I /Y",
     "dev": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",

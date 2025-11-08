@@ -85,7 +85,7 @@ const CardExperienceItem = ({ item, index }: Props) => {
                   </div>
                 </div>
               </div>
-              <div className="w-12 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-3 sm:mb-4"></div>
+              <div className="w-12 sm:w-20 h-0.5 sm:h-1 bg-blue-400 from-blue-500 to-purple-500 rounded-full mb-3 sm:mb-4"></div>
             </div>
             <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 lg:mb-8">
               {item.description.map((desc, i) => (
@@ -93,7 +93,7 @@ const CardExperienceItem = ({ item, index }: Props) => {
                   key={i}
                   className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed flex items-start group/desc"
                 >
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-1.5 sm:mt-2 mr-2 sm:mr-3 flex-shrink-0 transform group-hover/desc:scale-125 sm:group-hover/desc:scale-150 transition-transform duration-300"></span>
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-400 from-blue-500 to-purple-500 rounded-full mt-1.5 sm:mt-2 mr-2 sm:mr-3 flex-shrink-0 transform group-hover/desc:scale-125 sm:group-hover/desc:scale-150 transition-transform duration-300"></span>
                   <span className="flex-1">{desc}</span>
                 </li>
               ))}
