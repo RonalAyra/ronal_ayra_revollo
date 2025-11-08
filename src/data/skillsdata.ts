@@ -1,4 +1,15 @@
-import { Code, Database, Server, Terminal, Smartphone, Palette, Wrench } from "lucide-react";
+import {
+  Code,
+  Database,
+  Server,
+  Terminal,
+  Smartphone,
+  Palette,
+  Wrench,
+  Cpu,
+  BarChart3,
+  Shield,
+} from "lucide-react";
 
 export const skillCategories = [
   {
@@ -12,7 +23,7 @@ export const skillCategories = [
     ],
   },
   {
-    title: "Frontend Styling",
+    title: "Frontend Styling & UI",
     icon: Palette,
     color: "from-indigo-600 to-indigo-800",
     skills: [
@@ -23,7 +34,7 @@ export const skillCategories = [
     ],
   },
   {
-    title: "Backend",
+    title: "Backend Frameworks",
     icon: Server,
     color: "from-gray-600 to-gray-800",
     skills: [
@@ -32,17 +43,27 @@ export const skillCategories = [
       { name: "NestJS", level: 90 },
       { name: "Express.js", level: 85 },
       { name: "Ruby on Rails", level: 80 },
-      { name: "REST APIs", level: 95 },
+      { name: "Spring Boot", level: 70 },
     ],
   },
   {
-    title: "Database",
+    title: "Database Systems",
     icon: Database,
     color: "from-green-600 to-green-800",
     skills: [
       { name: "MySQL", level: 90 },
       { name: "PostgreSQL", level: 90 },
       { name: "MongoDB", level: 85 },
+    ],
+  },
+  {
+    title: "APIs & HTTP Clients",
+    icon: Cpu,
+    color: "from-cyan-600 to-cyan-800",
+    skills: [
+      { name: "Axios", level: 95 },
+      { name: "Fetch API", level: 90 },
+      { name: "WebSockets", level: 85 },
     ],
   },
   {
@@ -56,12 +77,30 @@ export const skillCategories = [
     ],
   },
   {
-    title: "State Management & Libraries",
+    title: "State Management",
     icon: Wrench,
-    color: "from-cyan-600 to-cyan-800",
+    color: "from-amber-600 to-amber-800",
     skills: [
       { name: "Pinia", level: 80 },
+      { name: "Redux", level: 70 },
+    ],
+  },
+  {
+    title: "Data Visualization",
+    icon: BarChart3,
+    color: "from-purple-600 to-purple-800",
+    skills: [
       { name: "ECharts", level: 85 },
+      { name: "Highcharts", level: 80 },
+    ],
+  },
+  {
+    title: "Authentication",
+    icon: Shield,
+    color: "from-green-600 to-green-800",
+    skills: [
+      { name: "JWT", level: 85 },
+      { name: "Laravel Sanctum", level: 80 },
     ],
   },
   {
@@ -71,6 +110,7 @@ export const skillCategories = [
     skills: [
       { name: "Git", level: 95 },
       { name: "Postman", level: 90 },
+      { name: "Linux", level: 88 },
       { name: "Storybook", level: 82 },
     ],
   },
@@ -91,5 +131,7 @@ export const techSkills = [
   "Divi",
   "Flutter",
   "Android Studio",
-  "Java"
+  "Java",
+  "Socket.IO",
+  "Spring Boot",
 ];

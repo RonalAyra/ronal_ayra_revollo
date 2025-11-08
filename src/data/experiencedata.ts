@@ -188,4 +188,23 @@ export const experiences: Experience[] = [
     technologies: ["WordPress", "Divi"],
     liveUrl: "https://kanchay.org.bo",
   },
+  {
+    id: 17,
+    company: "Programación Móvil",
+    position: "Sistema de Reserva de Parqueos",
+    period: "Julio 2019 – Diciembre 2019",
+    description: [
+      "Desarrollo completo del frontend y backend del sistema de reserva de parqueos.",
+      "Implementación en Android Studio utilizando Java.",
+      "Integración con Firebase Realtime Database para la gestión de datos en tiempo real.",
+      "Control de versiones y seguimiento del proyecto en Azure DevOps.",
+    ],
+    technologies: [
+      "Android Studio",
+      "Java",
+      "Firebase Realtime Database",
+      "Azure DevOps",
+    ],
+    liveUrl: "https://dev.azure.com/PROGRAMOVIL/ProMovParq",
+  },
 ];
