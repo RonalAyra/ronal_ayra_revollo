@@ -12,6 +12,7 @@ export const skillCategories = [
       { name: "HTML/CSS", level: 95 },
       { name: "Tailwind CSS", level: 90 },
       { name: "Vuetify", level: 80 },
+      { name: "Flutter", level: 50 },
       { name: "Styled Components", level: 85 },
       { name: "Pinia", level: 80 },
     ],
