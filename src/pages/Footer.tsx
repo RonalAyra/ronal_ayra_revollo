@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-black dark:text-white">
-            © 2024 Ronal Ayra. Hecho con mucho ☕
+            © 2025 Ronal Ayra. Hecho con mucho ☕
           </p>
         </div>
       </div>

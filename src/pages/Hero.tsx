@@ -37,16 +37,16 @@ const Hero = () => {
                     />
                   </div>
                 </div>
-                <div className="absolute -top-2 -right-2 bg-blue-400 from-green-400 to-blue-500 p-2 rounded-full animate-bounce">
+                <div className="absolute -top-2 -right-2 bg-blue-600 from-green-400 to-blue-500 p-2 rounded-full animate-bounce">
                   <Sparkles className="text-white" size={16} />
                 </div>
               </div>
             </div>
 
             <div className="space-y-6">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-white/90 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
                 Hola, soy{" "}
-                <span className="bg-blue-400 from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
+                <span className="bg-blue-600 from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
                   Ronal
                 </span>
               </h1>
@@ -81,7 +81,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
               <button
                 onClick={() => scrollToSection("experience")}
-                className="group px-8 py-4 bg-blue-400 from-blue-600 to-purple-600 text-white rounded-2xl font-semibold hover:shadow-2xl hover:scale-105 transform transition-all duration-300 flex items-center gap-3 shadow-lg"
+                className="group px-8 py-4 bg-blue-600 from-blue-600 to-purple-600 text-white rounded-2xl font-semibold hover:shadow-2xl hover:scale-105 transform transition-all duration-300 flex items-center gap-3 shadow-lg"
               >
                 <span>Explorar Proyectos</span>
                 <ChevronDown

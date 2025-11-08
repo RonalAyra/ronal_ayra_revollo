@@ -4,11 +4,7 @@ import CardExperienceItem from "../components/experience/CardExperienceItem";
 
 const ExperienceSection = () => {
   const [showAll, setShowAll] = useState(false);
-  
-  // Mostrar solo las primeras 4 experiencias inicialmente
   const displayedExperiences = showAll ? experiences : experiences.slice(0, 4);
-  
-  // Verificar si hay más de 4 experiencias para mostrar el botón
   const hasMoreExperiences = experiences.length > 4;
 
   return (
