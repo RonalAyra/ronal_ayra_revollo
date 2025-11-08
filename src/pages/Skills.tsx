@@ -28,7 +28,7 @@ const Skills = () => {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center">
           <h3 className="text-2xl font-bold text-black dark:text-white mb-8">
             Otras Tecnologías
           </h3>
@@ -37,7 +37,7 @@ const Skills = () => {
               <TechSkillItem key={tech} item={tech} />
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

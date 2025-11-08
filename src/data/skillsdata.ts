@@ -1,26 +1,31 @@
-import { Code, Database, Server, Terminal } from "lucide-react";
+import { Code, Database, Server, Terminal, Smartphone, Palette, Wrench } from "lucide-react";
 
 export const skillCategories = [
   {
-    title: "Frontend",
+    title: "Frontend Frameworks",
     icon: Code,
     color: "from-blue-600 to-blue-800",
     skills: [
       { name: "React.js", level: 95 },
       { name: "Vue.js", level: 90 },
       { name: "Next.js", level: 85 },
+    ],
+  },
+  {
+    title: "Frontend Styling",
+    icon: Palette,
+    color: "from-indigo-600 to-indigo-800",
+    skills: [
       { name: "HTML/CSS", level: 95 },
       { name: "Tailwind CSS", level: 90 },
       { name: "Vuetify", level: 80 },
-      { name: "Flutter", level: 50 },
       { name: "Styled Components", level: 85 },
-      { name: "Pinia", level: 80 },
     ],
   },
   {
     title: "Backend",
     icon: Server,
-    color: "from-gray-500 to-gray-800",
+    color: "from-gray-600 to-gray-800",
     skills: [
       { name: "Laravel", level: 95 },
       { name: "Node.js", level: 90 },
@@ -41,18 +46,50 @@ export const skillCategories = [
     ],
   },
   {
-    title: "DevOps & Tools",
+    title: "Mobile Development",
+    icon: Smartphone,
+    color: "from-purple-600 to-purple-800",
+    skills: [
+      { name: "Flutter", level: 50 },
+      { name: "Android Studio", level: 55 },
+      { name: "Java", level: 50 },
+    ],
+  },
+  {
+    title: "State Management & Libraries",
+    icon: Wrench,
+    color: "from-cyan-600 to-cyan-800",
+    skills: [
+      { name: "Pinia", level: 80 },
+      { name: "ECharts", level: 85 },
+    ],
+  },
+  {
+    title: "Development Tools",
     icon: Terminal,
     color: "from-orange-600 to-orange-800",
     skills: [
       { name: "Git", level: 95 },
       { name: "Postman", level: 90 },
-      { name: "ECharts", level: 85 },
-      { name: "SIAT", level: 88 },
       { name: "Storybook", level: 82 },
+    ],
+  },
+  {
+    title: "Specialized Systems",
+    icon: Terminal,
+    color: "from-red-600 to-red-800",
+    skills: [
+      { name: "SIAT", level: 88 },
       { name: "Divi", level: 78 },
     ],
   },
 ];
 
-export const techSkills = ["SIAT", "Storybook", "Divi"];
+export const techSkills = [
+  "SIAT",
+  "Storybook",
+  "Divi",
+  "Flutter",
+  "Android Studio",
+  "Java"
+];
