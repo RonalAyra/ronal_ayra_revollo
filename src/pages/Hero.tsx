@@ -5,7 +5,7 @@ import SocialIconItem from "../components/hero/SocialIconItem";
 import { socialIconData } from "../data/herodata";
 import profileImage from "../assets/image/profile.jpg";
 import cvPdf from "../assets/Ronal Ayra Revollo.pdf";
-import bannerImage from "../assets/baner.jpg";
+import bannerImage from "../assets/baner.png";
 
 const Hero = () => {
   const { scrollToSection } = useNavigation();
