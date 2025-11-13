@@ -25,7 +25,7 @@ const About = () => {
                 Mi Historia
               </h3>
               <p className="text-black dark:text-gray-300 leading-relaxed">
-                Soy desarrollador full stack con más de 3 años de experiencia en
+                Soy desarrollador full stack con más de 4 años de experiencia en
                 la creación de sistemas web modernos. Inicié mi carrera con{" "}
                 <strong>Laravel</strong>, desarrollando APIs y afianzando mi
                 conocimiento en arquitectura MVC. Luego formé parte de{" "}
@@ -35,15 +35,16 @@ const About = () => {
                 aplicaciones.
               </p>
               <p className="text-black dark:text-gray-300 leading-relaxed">
-                Actualmente soy parte del equipo de <strong>Faboce SRL</strong>,
-                donde lideré la migración del sistema ERP a la gestión 2025,
-                integrando múltiples bases de datos y sincronizando información
-                entre sistemas. También colaboré en la revalidación del sistema
-                de facturación y en el diseño de una nueva arquitectura enfocada
-                en rendimiento y experiencia de usuario. Hoy trabajo en una
+                Durante mi etapa en <strong>Faboce SRL</strong>, lideré la
+                migración del sistema ERP a la gestión 2025, integrando
+                múltiples bases de datos y sincronizando información entre
+                sistemas. Además, participé en la revalidación del sistema de
+                facturación y en el diseño de una nueva arquitectura centrada en
+                el rendimiento y la experiencia del usuario. Trabajé sobre una
                 infraestructura moderna con <strong>Vue.js</strong> en el
-                frontend y <strong>Laravel</strong> como API backend,
-                implementando soluciones eficientes y escalables.
+                frontend y <strong>Laravel</strong> en el backend, implementando
+                soluciones eficientes, escalables y orientadas a la optimización
+                de procesos empresariales.
               </p>
               <p className="text-black dark:text-gray-300 leading-relaxed">
                 Me especializo en <strong>Laravel, Vue.js y NestJS</strong>, con
@@ -73,8 +74,8 @@ const About = () => {
           </div>
           <div className="space-y-8 lg:col-span-2">
             {stats.map((item, index) => (
-            <StatsItem key={index} item={item} />
-          ))}
+              <StatsItem key={index} item={item} />
+            ))}
           </div>
         </div>
       </div>
