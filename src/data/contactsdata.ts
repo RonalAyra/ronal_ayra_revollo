@@ -5,8 +5,8 @@ export const contactInfoData: ContactInfo[] = [
   {
     icon: Mail,
     label: "Email",
-    value: "ronal.ayra.revollo@email.com",
-    href: "mailto:ronal.ayra.revollo@email.com?subject=Contacto%20desde%20portfolio&body=Hola%20Ronal,%20te%20contacto%20porque...",
+    value: "ronal.ayra.revollo@gmail.com",
+    href: "mailto:ronal.ayra.revollo@gmail.com?subject=Contacto%20desde%20portfolio&body=Hola%20Ronal,%20te%20contacto%20porque...",
   },
   {
     icon: Phone,
