@@ -25,44 +25,38 @@ const About = () => {
                 Mi Historia
               </h3>
               <p className="text-black dark:text-gray-300 leading-relaxed">
-                Soy desarrollador full stack con más de 4 años de experiencia en
-                la creación de sistemas web modernos. Inicié mi carrera con{" "}
-                <strong>Laravel</strong>, desarrollando APIs y afianzando mi
-                conocimiento en arquitectura MVC. Luego formé parte de{" "}
-                <strong>Xanthops</strong>, donde trabajé con{" "}
-                <strong>React, Vue.js</strong> y <strong>NestJS</strong>,
-                participando activamente en el desarrollo full stack de diversas
-                aplicaciones.
+                Tengo más de 4 años de experiencia construyendo sistemas web
+                modernos. Inicié con
+                <strong>Laravel</strong>, enfocándome en APIs y arquitectura
+                MVC. Más adelante, en
+                <strong>Xanthops</strong>, trabajé con{" "}
+                <strong>React, Vue.js</strong> y<strong>NestJS</strong> en el
+                desarrollo de diversas aplicaciones.
               </p>
               <p className="text-black dark:text-gray-300 leading-relaxed">
-                Durante mi etapa en <strong>Faboce SRL</strong>, lideré la
-                migración del sistema ERP a la gestión 2025, integrando
-                múltiples bases de datos y sincronizando información entre
-                sistemas. Además, participé en la revalidación del sistema de
-                facturación y en el diseño de una nueva arquitectura centrada en
-                el rendimiento y la experiencia del usuario. Trabajé sobre una
-                infraestructura moderna con <strong>Vue.js</strong> en el
-                frontend y <strong>Laravel</strong> en el backend, implementando
-                soluciones eficientes, escalables y orientadas a la optimización
-                de procesos empresariales.
+                En <strong>Faboce SRL</strong> lideré la migración del sistema
+                ERP a la gestión 2025, integrando múltiples bases de datos y
+                optimizando procesos empresariales. También participé en la
+                revalidación del sistema de facturación y en el diseño de una
+                arquitectura enfocada en rendimiento y experiencia de usuario,
+                trabajando con
+                <strong>Vue.js</strong> en el frontend y{" "}
+                <strong>Laravel</strong> en el backend.
               </p>
               <p className="text-black dark:text-gray-300 leading-relaxed">
                 Me especializo en <strong>Laravel, Vue.js y NestJS</strong>, con
                 experiencia en migraciones ERP, diseño de APIs y optimización de
-                sistemas. Destaco por mi análisis, adaptación y compromiso con
-                la calidad del software.
+                sistemas.
               </p>
             </div>
-
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-black dark:text-white">
                 Lo que me motiva
               </h3>
               <p className="text-black dark:text-gray-300 leading-relaxed">
-                Me inspiran los proyectos desafiantes que impulsan la
-                innovación. Disfruto aprender nuevas tecnologías, resolver
-                problemas complejos y construir soluciones que generen impacto
-                real.
+                Me motivan los retos que impulsan la innovación. Disfruto
+                aprender nuevas tecnologías, resolver problemas complejos y
+                crear soluciones que generen impacto real.
               </p>
             </div>
 
