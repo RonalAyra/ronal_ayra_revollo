@@ -5,7 +5,7 @@ export const experiences: Experience[] = [
     id: 1,
     company: "Faboce",
     position: "Backend / Frontend Developer",
-    period: "Junio 2024 – Actualidad",
+    period: "Junio 2024 – octubre 2025",
     description: [
       "Desarrollo y optimización de APIs RESTful.",
       "Implementación del módulo de comisiones y mejora del módulo de facturación con SIAT.",
@@ -33,7 +33,7 @@ export const experiences: Experience[] = [
     id: 3,
     company: "Migración Sistema SAS",
     position: "Backend Laravel / Frontend Vue 3 + Vuetify",
-    period: "Actualidad",
+    period: "Junio 2024 - octubre 2025",
     description: [
       "Creación de APIs para nuevos módulos del sistema.",
       "Migración del módulo de Contabilidad de Simec a plataforma web.",
