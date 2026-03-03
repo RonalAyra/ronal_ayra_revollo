@@ -3,6 +3,44 @@ import { Experience } from "../types";
 export const experiences: Experience[] = [
   {
     id: 1,
+    company: "Pertec",
+    position: "Analista Informatico",
+    period: "Enero 2026 – Actualidad",
+    description: [
+      "Desarrollo de un sistema de facturación en línea integrado con SIAT.",
+      "Implementación y gestión de módulos de facturación, incluyendo emisión de facturas, notas de débito y notas de crédito.",
+      "Desarrollo y mantenimiento de funcionalidades clave del sistema tributario.",
+      "Integración de servicios backend en .NET 6 y desarrollo frontend con Angular.",
+    ],
+    technologies: [".NET 6", "Angular", "SQL Server", "SIAT", ""],
+  },
+  {
+    id: 2,
+    company: "Sistema de Facturación ERP (Proyecto Propio)",
+    position: "Full Stack Developer (Vue / Laravel)",
+    period: "Octubre 2024 – Actualidad",
+    description: [
+      "Diseño y desarrollo de un sistema ERP de facturación electrónica integrado con SIAT.",
+      "Implementación del frontend administrativo en Vue para gestión de clientes, productos, ventas, reportes y control fiscal.",
+      "Desarrollo de APIs RESTful en Laravel para emisión, validación y envío de facturas electrónicas bajo normativa SIAT.",
+      "Implementación de eventos significativos, sincronización de catálogos y control de estados tributarios.",
+      "Diseño de arquitectura y base de datos optimizada para escalabilidad y alto rendimiento.",
+    ],
+    technologies: ["Vue.js", "Laravel", "Postgres", "SIAT"],
+  },
+  {
+    id: 3,
+    company: "Biblioteca Virtual",
+    position: "Frontend Developer (React) / Backend Developer (Laravel)",
+    period: "Octubre 2024 – Enero 2025",
+    description: [
+      "Desarrollo del frontend utilizando React para la gestión administrativa del sistema.",
+      "Construcción y optimización de APIs RESTful con Laravel.",
+    ],
+    technologies: ["React", "Laravel", "MySQL", "SIAT"],
+  },
+  {
+    id: 4,
     company: "Faboce",
     position: "Backend / Frontend Developer",
     period: "Junio 2024 – octubre 2025",
@@ -14,7 +52,7 @@ export const experiences: Experience[] = [
     technologies: ["Laravel", "Vue.js", "Node.js", "SIAT"],
   },
   {
-    id: 2,
+    id: 5,
     company: "Topógrafos Bolivia",
     position: "Full Stack Developer – Sistema Web y Administración (Freelance)",
     period: "Julio 2025 – Septiembre 2025",
@@ -30,7 +68,7 @@ export const experiences: Experience[] = [
     liveUrl: "https://cotobolcochabamba.com.bo",
   },
   {
-    id: 3,
+    id: 6,
     company: "Migración Sistema SAS",
     position: "Backend Laravel / Frontend Vue 3 + Vuetify",
     period: "Junio 2024 - octubre 2025",
@@ -42,7 +80,7 @@ export const experiences: Experience[] = [
     technologies: ["Laravel", "Vue 3", "Vuetify"],
   },
   {
-    id: 4,
+    id: 7,
     company: "Xanthops",
     position: "Landing Page – Xanthops Landing",
     period: "Febrero 2024 – Mayo 2024",
@@ -54,7 +92,7 @@ export const experiences: Experience[] = [
     liveUrl: "https://xanthops.com",
   },
   {
-    id: 5,
+    id: 8,
     company: "Xanthops",
     position: "Frontend – Pixon",
     period: "Enero 2024 – Abril 2024",
@@ -63,7 +101,7 @@ export const experiences: Experience[] = [
     liveUrl: "https://pixonweb.xanthops.com",
   },
   {
-    id: 6,
+    id: 9,
     company: "Xanthops",
     position: "Frontend – Capping Group",
     period: "Noviembre 2023 – Diciembre 2023",
@@ -74,7 +112,7 @@ export const experiences: Experience[] = [
     technologies: ["Vue.js", "Pinia", "Axios"],
   },
   {
-    id: 7,
+    id: 10,
     company: "Xanthops",
     position: "Backend – Capping Group",
     period: "Noviembre 2023 – Diciembre 2023",
@@ -85,7 +123,7 @@ export const experiences: Experience[] = [
     technologies: ["Node.js", "Express", "MongoDB"],
   },
   {
-    id: 8,
+    id: 11,
     company: "Xanthops",
     position: "Frontend – Seguros",
     period: "Octubre 2023 – Noviembre 2023",
@@ -97,7 +135,7 @@ export const experiences: Experience[] = [
     liveUrl: "https://seguros-dev.xanthops.com",
   },
   {
-    id: 9,
+    id: 12,
     company: "Xanthops",
     position: "Backend – Seguros",
     period: "Octubre 2023 – Noviembre 2023",
@@ -108,7 +146,7 @@ export const experiences: Experience[] = [
     technologies: ["Ruby on Rails", "PostgreSQL"],
   },
   {
-    id: 10,
+    id: 13,
     company: "Xanthops",
     position: "Componentes Charts",
     period: "Mayo 2023 – Septiembre 2023",
@@ -119,7 +157,7 @@ export const experiences: Experience[] = [
     technologies: ["Vue.js", "Chart.js", "Storybook"],
   },
   {
-    id: 11,
+    id: 14,
     company: "Xanthops",
     position: "Backend – Bombo APIs",
     period: "Octubre 2022 – Abril 2023",
@@ -127,7 +165,7 @@ export const experiences: Experience[] = [
     technologies: ["NestJS", "TypeScript", "PostgreSQL"],
   },
   {
-    id: 12,
+    id: 15,
     company: "Xanthops",
     position: "CMS – Bombo Backoffice",
     period: "Octubre 2022 – Abril 2023",
@@ -139,7 +177,7 @@ export const experiences: Experience[] = [
     liveUrl: "https://bombo.infinixsoft.com",
   },
   {
-    id: 13,
+    id: 16,
     company: "Xanthops",
     position: "Landing Page – Bombo Frontend",
     period: "Octubre 2022 – Abril 2023",
@@ -151,7 +189,7 @@ export const experiences: Experience[] = [
     liveUrl: "https://bomboweb.infinixsoft.com",
   },
   {
-    id: 14,
+    id: 17,
     company: "Confecciones Ayra",
     position: "CMS y Landing de Confecciones Ayra",
     period: "Mayo 2024",
@@ -164,7 +202,7 @@ export const experiences: Experience[] = [
     liveUrl: "https://ayra-4b7d7.web.app/",
   },
   {
-    id: 15,
+    id: 18,
     company: "Dynasys Srl",
     position: "Baremo Backend",
     period: "Agosto 2020 – Diciembre 2020",
@@ -176,7 +214,7 @@ export const experiences: Experience[] = [
     technologies: ["Laravel", "MySQL"],
   },
   {
-    id: 16,
+    id: 19,
     company: "K’anchay",
     position: "Práctica Empresarial",
     period: "Febrero 2020 – Junio 2020",
@@ -189,7 +227,7 @@ export const experiences: Experience[] = [
     liveUrl: "https://kanchay.org.bo",
   },
   {
-    id: 17,
+    id: 20,
     company: "Programación Móvil",
     position: "Sistema de Reserva de Parqueos",
     period: "Julio 2019 – Diciembre 2019",

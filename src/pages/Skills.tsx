@@ -1,6 +1,5 @@
 import SkillCategoryItem from "../components/skills/SkillCategoryItem";
-import TechSkillItem from "../components/skills/TechSkillItem";
-import { skillCategories, techSkills,  } from "../data/skillsdata";
+import { skillCategories } from "../data/skillsdata";
 
 const Skills = () => {
   return (
@@ -27,17 +26,6 @@ const Skills = () => {
             <SkillCategoryItem key={index} item={category} />
           ))}
         </div>
-
-        {/* <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold text-black dark:text-white mb-8">
-            Otras Tecnologías
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {techSkills.map((tech) => (
-              <TechSkillItem key={tech} item={tech} />
-            ))}
-          </div>
-        </div> */}
       </div>
     </section>
   );
