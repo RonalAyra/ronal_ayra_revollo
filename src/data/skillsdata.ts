@@ -44,6 +44,7 @@ export const skillCategories = [
       { name: "Express.js", level: 85 },
       { name: "Ruby on Rails", level: 80 },
       { name: "Spring Boot", level: 70 },
+      { name: ".Net 6", level: 70 },
     ],
   },
   {
