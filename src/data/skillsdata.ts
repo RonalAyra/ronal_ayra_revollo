@@ -44,7 +44,7 @@ export const skillCategories = [
       { name: "Express.js", level: 85 },
       { name: "Ruby on Rails", level: 80 },
       { name: "Spring Boot", level: 70 },
-      { name: ".Net 6", level: 70 },
+      { name: ".Net 6", level: 75 },
     ],
   },
   {
@@ -55,6 +55,7 @@ export const skillCategories = [
       { name: "MySQL", level: 90 },
       { name: "PostgreSQL", level: 90 },
       { name: "MongoDB", level: 85 },
+      { name: "Sql Server", level: 65 },
     ],
   },
   {

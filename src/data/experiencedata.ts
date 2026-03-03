@@ -12,7 +12,7 @@ export const experiences: Experience[] = [
       "Desarrollo y mantenimiento de funcionalidades clave del sistema tributario.",
       "Integración de servicios backend en .NET 6 y desarrollo frontend con Angular.",
     ],
-    technologies: [".NET 6", "Angular", "SQL Server", "SIAT", ""],
+    technologies: [".NET 6", "Angular", "SQL Server", "SIAT", "Sql Server"],
   },
   {
     id: 2,
