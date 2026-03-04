@@ -21,9 +21,11 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
           {skillCategories.map((category, index) => (
-            <SkillCategoryItem key={index} item={category} />
+            <div key={index} className="break-inside-avoid mb-4">
+              <SkillCategoryItem item={category} />
+            </div>
           ))}
         </div>
       </div>
