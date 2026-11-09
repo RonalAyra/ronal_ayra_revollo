@@ -30,9 +30,9 @@ const SkillItem = ({ item, color }: Props) => {
           </span>
         </div>
       </div>
-      <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+      <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-300/40 dark:border-slate-700/60">
         <div
-          className={`${color} h-2 rounded-full transition-all duration-500 ease-out`}
+          className={`${color} h-full rounded-full transition-all duration-500 ease-out`}
           style={{ width: `${item.level}%` }}
           role="progressbar"
           aria-valuenow={item.level}

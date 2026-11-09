@@ -36,7 +36,7 @@ export const skillCategories = [
   {
     title: "Backend Frameworks",
     icon: Server,
-    color: "bg-gray-700",
+    color: "bg-teal-600",
     skills: [
       { name: "Laravel", level: 95 },
       { name: "Node.js", level: 90 },
