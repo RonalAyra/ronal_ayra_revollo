@@ -15,7 +15,7 @@ export const skillCategories = [
   {
     title: "Frontend Frameworks",
     icon: Code,
-    color: "from-blue-600 to-blue-800",
+    color: "bg-blue-600",
     skills: [
       { name: "React.js", level: 95 },
       { name: "Vue.js", level: 90 },
@@ -25,7 +25,7 @@ export const skillCategories = [
   {
     title: "Frontend Styling & UI",
     icon: Palette,
-    color: "from-indigo-600 to-indigo-800",
+    color: "bg-indigo-600",
     skills: [
       { name: "HTML/CSS", level: 95 },
       { name: "Tailwind CSS", level: 90 },
@@ -36,7 +36,7 @@ export const skillCategories = [
   {
     title: "Backend Frameworks",
     icon: Server,
-    color: "from-gray-600 to-gray-800",
+    color: "bg-gray-700",
     skills: [
       { name: "Laravel", level: 95 },
       { name: "Node.js", level: 90 },
@@ -50,7 +50,7 @@ export const skillCategories = [
   {
     title: "Database Systems",
     icon: Database,
-    color: "from-green-600 to-green-800",
+    color: "bg-green-600",
     skills: [
       { name: "MySQL", level: 90 },
       { name: "PostgreSQL", level: 90 },
@@ -61,7 +61,7 @@ export const skillCategories = [
   {
     title: "APIs & HTTP Clients",
     icon: Cpu,
-    color: "from-cyan-600 to-cyan-800",
+    color: "bg-cyan-600",
     skills: [
       { name: "Axios", level: 95 },
       { name: "Fetch API", level: 90 },
@@ -71,7 +71,7 @@ export const skillCategories = [
   {
     title: "Mobile Development",
     icon: Smartphone,
-    color: "from-purple-600 to-purple-800",
+    color: "bg-purple-600",
     skills: [
       { name: "Flutter", level: 50 },
       { name: "Android Studio", level: 55 },
@@ -81,7 +81,7 @@ export const skillCategories = [
   {
     title: "State Management",
     icon: Wrench,
-    color: "from-amber-600 to-amber-800",
+    color: "bg-amber-600",
     skills: [
       { name: "Pinia", level: 80 },
       { name: "Redux", level: 70 },
@@ -90,7 +90,7 @@ export const skillCategories = [
   {
     title: "Data Visualization",
     icon: BarChart3,
-    color: "from-purple-600 to-purple-800",
+    color: "bg-purple-600",
     skills: [
       { name: "ECharts", level: 85 },
       { name: "Highcharts", level: 80 },
@@ -99,7 +99,7 @@ export const skillCategories = [
   {
     title: "Authentication",
     icon: Shield,
-    color: "from-green-600 to-green-800",
+    color: "bg-green-600",
     skills: [
       { name: "JWT", level: 85 },
       { name: "Laravel Sanctum", level: 80 },
@@ -108,7 +108,7 @@ export const skillCategories = [
   {
     title: "Development Tools",
     icon: Terminal,
-    color: "from-orange-600 to-orange-800",
+    color: "bg-orange-600",
     skills: [
       { name: "Git", level: 95 },
       { name: "Postman", level: 90 },
@@ -119,7 +119,7 @@ export const skillCategories = [
   {
     title: "Specialized Systems",
     icon: Terminal,
-    color: "from-red-600 to-red-800",
+    color: "bg-red-600",
     skills: [
       { name: "SIAT", level: 88 },
       { name: "Divi", level: 78 },

@@ -1,15 +1,33 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  base: "/ronal_ayra_revollo/",
   plugins: [react()],
-  publicDir: 'public',
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-  },
   optimizeDeps: {
-    exclude: ["lucide-react"],
+    exclude: ['lucide-react'],
+  },
+  build: {
+    chunkSizeWarningLimit: 650,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/lucide-react')) {
+            return 'vendor-icons';
+          }
+          if (
+            id.includes('commonjsHelpers') ||
+            id.includes('node_modules/react/') ||
+            id.includes('node_modules/react-dom/') ||
+            id.includes('node_modules/scheduler/')
+          ) {
+            return 'vendor-react';
+          }
+          if (id.includes('node_modules/three/build/')) {
+            return 'vendor-three-core';
+          }
+        },
+      },
+    },
   },
 });

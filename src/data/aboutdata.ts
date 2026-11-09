@@ -8,7 +8,7 @@ export const taitData = [
 ];
 
 export const stats = [
-    { icon: Code, value: "16+", label: "Proyectos " },
-    { icon: Award, value: "4+", label: "Años de Experiencia" },
-    { icon: Coffee, value: "9999+", label: "Tazas de Café" },
-  ];
+  { icon: Code, value: "20+", label: "Proyectos y Sistemas" },
+  { icon: Award, value: "4+", label: "Años de Experiencia" },
+  { icon: Coffee, value: "100%", label: "Compromiso y Calidad" },
+];

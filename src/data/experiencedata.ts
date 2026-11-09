@@ -4,7 +4,7 @@ export const experiences: Experience[] = [
   {
     id: 1,
     company: "Pertec",
-    position: "Analista Informatico",
+    position: "Analista Informático",
     period: "Enero 2026 – Actualidad",
     description: [
       "Desarrollo de un sistema de facturación en línea integrado con SIAT.",
@@ -12,7 +12,7 @@ export const experiences: Experience[] = [
       "Desarrollo y mantenimiento de funcionalidades clave del sistema tributario.",
       "Integración de servicios backend en .NET 6 y desarrollo frontend con Angular.",
     ],
-    technologies: [".NET 6", "Angular", "SQL Server", "SIAT", "Sql Server"],
+    technologies: [".NET 6", "Angular", "SQL Server", "SIAT"],
   },
   {
     id: 2,

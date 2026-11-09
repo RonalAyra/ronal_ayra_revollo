@@ -20,13 +20,15 @@ function App() {
 
 function AppContent() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gradient-to-brtransition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-200">
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "vite build && xcopy \"public\\assets\" \"dist\\assets\" /E /I /Y",
+    "build": "vite build",
     "dev": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
@@ -14,7 +14,6 @@
   "dependencies": {
     "@react-three/drei": "^9.92.7",
     "@react-three/fiber": "^8.15.14",
-    "framer-motion": "^12.23.24",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

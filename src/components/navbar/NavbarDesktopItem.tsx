@@ -12,21 +12,24 @@ const NavBarDesktopItem = ({
   scrollToSection,
 }: Props) => {
   const { icon: Icon } = item;
+  const isActive = activeSection === item.id;
+
   return (
     <button
-      key={item.id}
+      type="button"
       onClick={() => scrollToSection(item.id)}
-      className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center gap-1 ${
-        activeSection === item.id
-          ? "bg-gray-500 from-gray-500 to-gray-500 text-white shadow-lg"
-          : "text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400"
+      aria-current={isActive ? "page" : undefined}
+      className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center gap-2 ${
+        isActive
+          ? "bg-blue-600 text-white shadow-sm"
+          : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400"
       }`}
     >
       <Icon
         size={16}
-        className={activeSection === item.id ? "text-white" : "text-current"}
+        className={isActive ? "text-white" : "text-slate-500 dark:text-slate-400"}
       />
-      {item.label}
+      <span>{item.label}</span>
     </button>
   );
 };
