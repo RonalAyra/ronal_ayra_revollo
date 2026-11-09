@@ -12,6 +12,13 @@ import {
   Calendar,
   Building2,
   Filter,
+  Copy,
+  Check,
+  KeyRound,
+  Layers,
+  GitCommit,
+  Milestone,
+  Users,
 } from "lucide-react";
 import { experiences } from "../data/experiencedata";
 import CardExperienceItem from "../components/experience/CardExperienceItem";
@@ -19,15 +26,18 @@ import type { Experience } from "../types";
 
 const TECH_FILTERS = [
   "Todas",
+  ".NET 10",
+  "Flutter",
   "Laravel",
   "Vue",
   "React",
   ".NET 6",
   "Angular",
   "NestJS",
-  "Flutter",
-  "SQL Server",
+  "SignalR",
+  "Docker",
   "PostgreSQL",
+  "SQL Server",
   "MySQL",
   "MongoDB",
   "SIAT",
@@ -39,6 +49,13 @@ const ExperienceSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedExperience, setSelectedExperience] =
     useState<Experience | null>(null);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const handleCopyText = (text: string, field: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(field);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -286,7 +303,9 @@ const ExperienceSection = () => {
           onClick={() => setSelectedExperience(null)}
         >
           <div
-            className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden"
+            className={`bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xl ${
+              selectedExperience.caseStudy ? "max-w-4xl" : "max-w-2xl"
+            } w-full max-h-[90vh] flex flex-col overflow-hidden`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Encabezado del modal */}
@@ -320,6 +339,184 @@ const ExperienceSection = () => {
 
             {/* Cuerpo del modal */}
             <div className="p-5 sm:p-6 overflow-y-auto space-y-6">
+              {selectedExperience.caseStudy && (
+                <>
+                  {/* Resumen Detallado del Caso de Estudio */}
+                  <div className="p-4 rounded-xl bg-blue-50/70 dark:bg-slate-800/80 border border-blue-200/70 dark:border-slate-700">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400 mb-2">
+                      Caso de Estudio — Resumen Ejecutivo
+                    </h4>
+                    <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                      {selectedExperience.caseStudy.summary}
+                    </p>
+                  </div>
+
+                  {/* Datos de Demo, Despliegue y Credenciales */}
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 space-y-4">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200">
+                      <KeyRound size={15} className="text-blue-600 dark:text-blue-400" />
+                      <span>1. Datos de Demo, Endpoints y Credenciales</span>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-3 text-xs">
+                      {selectedExperience.liveUrl && (
+                        <div className="p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700">
+                          <span className="text-slate-500 dark:text-slate-400 block mb-1">
+                            Web App Backoffice (Demo):
+                          </span>
+                          <a
+                            href={selectedExperience.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono font-semibold text-blue-600 dark:text-blue-400 hover:underline break-all"
+                          >
+                            {selectedExperience.liveUrl}
+                          </a>
+                        </div>
+                      )}
+                      {selectedExperience.caseStudy.portalUrl && (
+                        <div className="p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700">
+                          <span className="text-slate-500 dark:text-slate-400 block mb-1">
+                            Portal de Autoservicio RRHH (Empleados):
+                          </span>
+                          <a
+                            href={selectedExperience.caseStudy.portalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono font-semibold text-teal-600 dark:text-teal-400 hover:underline break-all"
+                          >
+                            {selectedExperience.caseStudy.portalUrl}
+                          </a>
+                        </div>
+                      )}
+                      {selectedExperience.caseStudy.apiEndpoint && (
+                        <div className="p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700">
+                          <span className="text-slate-500 dark:text-slate-400 block mb-1">
+                            API REST Endpoint Base (.env.production):
+                          </span>
+                          <span className="font-mono font-semibold text-slate-800 dark:text-slate-200 break-all">
+                            {selectedExperience.caseStudy.apiEndpoint}
+                          </span>
+                        </div>
+                      )}
+                      {selectedExperience.caseStudy.signalrHub && (
+                        <div className="p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700">
+                          <span className="text-slate-500 dark:text-slate-400 block mb-1">
+                            Hub Tiempo Real (SignalR WebSockets):
+                          </span>
+                          <span className="font-mono font-semibold text-slate-800 dark:text-slate-200 break-all">
+                            {selectedExperience.caseStudy.signalrHub}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {selectedExperience.caseStudy.demoCredentials && (
+                      <div className="grid sm:grid-cols-2 gap-3 pt-1">
+                        <div className="flex items-center justify-between gap-2 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700 text-xs">
+                          <div>
+                            <span className="text-slate-500 dark:text-slate-400 block">
+                              Usuario Demo:
+                            </span>
+                            <strong className="font-mono text-slate-900 dark:text-white">
+                              {selectedExperience.caseStudy.demoCredentials.user}
+                            </strong>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              handleCopyText(
+                                selectedExperience.caseStudy!.demoCredentials!.user,
+                                "user"
+                              )
+                            }
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white transition-colors"
+                          >
+                            {copiedField === "user" ? (
+                              <>
+                                <Check size={13} />
+                                <span>Copiado</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy size={13} />
+                                <span>Copiar</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+
+                        <div className="flex items-center justify-between gap-2 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700 text-xs">
+                          <div>
+                            <span className="text-slate-500 dark:text-slate-400 block">
+                              Contraseña Demo:
+                            </span>
+                            <strong className="font-mono text-slate-900 dark:text-white">
+                              {selectedExperience.caseStudy.demoCredentials.password}
+                            </strong>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              handleCopyText(
+                                selectedExperience.caseStudy!.demoCredentials!.password,
+                                "pass"
+                              )
+                            }
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white transition-colors"
+                          >
+                            {copiedField === "pass" ? (
+                              <>
+                                <Check size={13} />
+                                <span>Copiado</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy size={13} />
+                                <span>Copiar</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Detalle por Repositorio */}
+                  {selectedExperience.caseStudy.repoStats && (
+                    <div>
+                      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+                        <GitCommit size={15} className="text-blue-600 dark:text-blue-400" />
+                        <span>Detalle de Repositorios (+130 Commits / 20 PRs)</span>
+                      </div>
+                      <div className="grid sm:grid-cols-2 gap-3">
+                        {selectedExperience.caseStudy.repoStats.map((repo) => (
+                          <div
+                            key={repo.name}
+                            className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80 text-xs space-y-1"
+                          >
+                            <div className="flex items-center justify-between gap-2">
+                              <strong className="text-slate-900 dark:text-white font-bold">
+                                {repo.name}
+                              </strong>
+                              <span className="px-2 py-0.5 rounded bg-blue-600 text-white font-semibold">
+                                {repo.totalCommits}
+                              </span>
+                            </div>
+                            <p className="text-slate-600 dark:text-slate-300">
+                              <span className="text-slate-400">Inicio:</span> {repo.firstCommit}
+                            </p>
+                            <p className="text-slate-600 dark:text-slate-300">
+                              <span className="text-slate-400">Actualidad:</span> {repo.lastCommit}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+
               <div>
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
                   Responsabilidades y Logros Principales
@@ -336,6 +533,108 @@ const ExperienceSection = () => {
                   ))}
                 </ul>
               </div>
+
+              {selectedExperience.caseStudy?.architectureLayers && (
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+                    <Layers size={15} className="text-blue-600 dark:text-blue-400" />
+                    <span>Arquitectura y Stack por Capas</span>
+                  </div>
+                  <div className="space-y-3">
+                    {selectedExperience.caseStudy.architectureLayers.map(
+                      (layer) => (
+                        <div
+                          key={layer.title}
+                          className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80"
+                        >
+                          <h5 className="text-sm font-bold text-slate-900 dark:text-white mb-2">
+                            {layer.title}
+                          </h5>
+                          <ul className="space-y-1.5">
+                            {layer.items.map((item, idx) => (
+                              <li
+                                key={idx}
+                                className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 flex items-start gap-2"
+                              >
+                                <span className="w-1.5 h-1.5 rounded-full bg-teal-600 mt-1.5 flex-shrink-0" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {selectedExperience.caseStudy?.modules && (
+                <div>
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+                    Detalle de Módulos y Funcionalidades del Sistema
+                  </h4>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {selectedExperience.caseStudy.modules.map((mod) => (
+                      <div
+                        key={mod.title}
+                        className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80"
+                      >
+                        <h5 className="text-sm font-bold text-slate-900 dark:text-white mb-2">
+                          {mod.title}
+                        </h5>
+                        <ul className="space-y-1.5">
+                          {mod.items.map((it, idx) => (
+                            <li
+                              key={idx}
+                              className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed flex items-start gap-2"
+                            >
+                              <span className="w-1 h-1 rounded-full bg-blue-600 dark:bg-blue-400 mt-1.5 flex-shrink-0" />
+                              <span>{it}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {selectedExperience.caseStudy?.milestones && (
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+                    <Milestone size={15} className="text-blue-600 dark:text-blue-400" />
+                    <span>Línea de Tiempo de Hitos (Evolución del Sistema)</span>
+                  </div>
+                  <div className="space-y-3">
+                    {selectedExperience.caseStudy.milestones.map((ms) => (
+                      <div
+                        key={ms.period}
+                        className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80"
+                      >
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
+                          <span className="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-600 text-white">
+                            {ms.period}
+                          </span>
+                          <h5 className="text-sm font-bold text-slate-900 dark:text-white">
+                            {ms.title}
+                          </h5>
+                        </div>
+                        <ul className="space-y-1.5">
+                          {ms.items.map((it, idx) => (
+                            <li
+                              key={idx}
+                              className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 flex items-start gap-2"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mt-1.5 flex-shrink-0" />
+                              <span>{it}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div>
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
@@ -356,6 +655,17 @@ const ExperienceSection = () => {
 
             {/* Acciones del modal */}
             <div className="flex flex-wrap items-center justify-end gap-3 p-4 sm:p-5 bg-slate-50 dark:bg-slate-800/60 border-t border-slate-200 dark:border-slate-800">
+              {selectedExperience.caseStudy?.portalUrl && (
+                <a
+                  href={selectedExperience.caseStudy.portalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-teal-600 hover:bg-teal-700 text-white transition-colors"
+                >
+                  <Users size={16} />
+                  <span>Portal Autoservicio RRHH</span>
+                </a>
+              )}
               {selectedExperience.liveUrl && (
                 <a
                   href={selectedExperience.liveUrl}
@@ -364,7 +674,11 @@ const ExperienceSection = () => {
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-colors"
                 >
                   <ExternalLink size={16} />
-                  <span>Visitar sitio del proyecto</span>
+                  <span>
+                    {selectedExperience.caseStudy
+                      ? "Abrir Demo Backoffice ERP"
+                      : "Visitar sitio del proyecto"}
+                  </span>
                 </a>
               )}
               <button

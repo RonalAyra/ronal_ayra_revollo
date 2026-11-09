@@ -2,6 +2,211 @@ import { Experience } from "../types";
 
 export const experiences: Experience[] = [
   {
+    id: 18,
+    company: "WR Inventory ERP — Sistema ERP Empresarial Multi-Agencia y Multi-Almacén",
+    position: "Full Stack Architect & Developer (Flutter Web & .NET 10 Modular Monolith)",
+    period: "Julio 2026 – Presente",
+    liveUrl: "http://13.140.134.191",
+    description: [
+      "Plataforma empresarial integral (Full-Stack) de planificación de recursos empresariales (ERP) multi-sucursal y multi-almacén (~4 meses de desarrollo continuo, +130 commits y 20 Pull Requests integrados).",
+      "Frontend (ERP-BACKOFFICE) en Flutter 3.11+ & Dart (Web SPA/WASM y soporte cross-platform) con Clean Architecture Modular, Design System propio (Modo Claro/Oscuro), dashboards BI con Apache ECharts, tablas PlutoGrid y escáner QR/barras.",
+      "Backend (ERP-System) bajo Monolito Modular en .NET 10 (ASP.NET Core Web API) aplicando Clean Architecture, DDD y CQRS con MediatR, FluentValidation, PostgreSQL 15+ (EF Core 10), múltiples DbContext, Soft-Delete global y Auditoría completa.",
+      "Tiempo real con SignalR WebSockets (sincronización en vivo de matriz de permisos RBAC estilo Spatie sin reloguear), generación nativa de PDF (PDFsharp), Rate Limiting por IP y respuestas estandarizadas RFC 7807.",
+      "9 áreas funcionales integradas: BI & Dashboards Ejecutivos, Seguridad Multi-Sucursal, Inventarios & Kardex/Conteos Físicos, Ventas & Facturación POS/CUFD, Compras & CxP, Contabilidad & Arqueos de Caja (BOB/USD), RRHH con Portal de Autoservicio por PIN (/portal-boletas) y Activos Fijos.",
+      "Despliegue en servidor VPS Linux (Contabo) con Docker multi-etapa y proxy inverso Nginx Alpine para /api/ y túneles WebSocket /hubs/, compresión Brotli/Gzip/WASM y Hardening HTTP (CSP, X-Frame-Options).",
+    ],
+    technologies: [
+      "Flutter",
+      "Dart",
+      ".NET 10",
+      "C#",
+      "PostgreSQL",
+      "SignalR",
+      "Clean Architecture",
+      "CQRS & DDD",
+      "Docker",
+      "Nginx",
+      "ECharts",
+      "EF Core 10",
+    ],
+    caseStudy: {
+      summary:
+        "Desarrollé WR Inventory ERP, una solución empresarial completa diseñada para centralizar y automatizar la operación comercial, logística, financiera y de talento humano de empresas con múltiples agencias y almacenes. El backend (ERP-System) está diseñado bajo una arquitectura de Monolito Modular con Clean Architecture, DDD y CQRS (MediatR) sobre .NET 10, garantizando desacoplamiento por dominios, validaciones automatizadas en el pipeline y trazabilidad completa (Soft-Delete y Auditoría). El frontend (ERP-BACKOFFICE) está desarrollado en Flutter (Web & Cross-platform) con un Design System propio, tablas de alto rendimiento, dashboards analíticos con Apache ECharts, sincronización de permisos en tiempo real con SignalR y generación nativa de documentos PDF.",
+      portalUrl: "http://13.140.134.191/portal-boletas",
+      apiEndpoint: "http://13.140.134.191/api",
+      signalrHub: "http://13.140.134.191/hubs/erp",
+      demoCredentials: {
+        user: "admin@erpsystem.com",
+        password: "Admin123!@#",
+        note: "Credenciales Demo (Seeder por defecto)",
+      },
+      repoStats: [
+        {
+          name: "Frontend (ERP-BACKOFFICE)",
+          firstCommit: "13 de julio de 2026 (5d87d89)",
+          lastCommit: "8 de noviembre de 2026 (814afbc - PR #20)",
+          totalCommits: "78 commits",
+        },
+        {
+          name: "Backend (ERP-System)",
+          firstCommit: "24 de julio de 2026 (8399a64)",
+          lastCommit: "8 de noviembre de 2026 (be87a96 - PR #17)",
+          totalCommits: "55 commits",
+        },
+      ],
+      architectureLayers: [
+        {
+          title: "Frontend (ERP-BACKOFFICE)",
+          items: [
+            "Framework & Lenguaje: Flutter 3.11+ & Dart (Compilación Web SPA / WASM y soporte móvil/desktop).",
+            "Arquitectura: Clean Architecture Modular + Design System propio (AGENTS.md) con soporte nativo Claro/Oscuro y 100% responsivo (responsive_framework).",
+            "Estado y Ruteo: provider (ChangeNotifier) y go_router (ShellRoute, breadcrumbs dinámicos y guardias de permisos en tiempo real).",
+            "Red y Tiempo Real: dio + dio_smart_retry (interceptores JWT, refresh token y cancelación de requests) + signalr_netcore (WebSockets en vivo).",
+            "Visualización y UI: flutter_echarts (BI), pluto_grid y CustomDataTable, flutter_form_builder + form_builder_validators, mobile_scanner (QR/Barras).",
+          ],
+        },
+        {
+          title: "Backend (ERP-System)",
+          items: [
+            "Framework & Runtime: ASP.NET Core Web API (.NET 10) con C#.",
+            "Patrones: Modular Monolith (6 módulos de dominio con capas Domain, Application, Infrastructure y API), CQRS con MediatR + ValidationBehavior, DDD, Repositorio Genérico y Unit of Work.",
+            "Persistencia: PostgreSQL 15+ con Entity Framework Core 10 (Npgsql), múltiples DbContext aislados por módulo, DbSeeder automático, Soft-Delete global (IsDeleted) y AuditableEntity.",
+            "Seguridad y Resiliencia: JWT (Access + Refresh Token), BCrypt, RBAC jerárquico estilo Spatie (Modulo.Recurso.Accion y comodines *) sincronizado en vivo, Rate Limiting por IP y norma RFC 7807 (ProblemDetails).",
+            "Librerías Clave: FluentValidation, AutoMapper, SignalR (AppRealtimeHub), PDFsharp, Swashbuckle/Swagger (OpenAPI) y compresión HTTP Brotli + Gzip.",
+          ],
+        },
+        {
+          title: "DevOps e Infraestructura",
+          items: [
+            "Contenedorización: Docker multi-etapa (Dockerfile Backend y Dockerfile Frontend).",
+            "Servidor Web y Proxy Inverso: Nginx Alpine (nginx.conf) con proxy reverso para /api/, túneles WebSocket /hubs/, compresión Gzip/WASM y Hardening HTTP (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy).",
+            "Hosting: Servidor VPS Linux en Contabo (13.140.134.191).",
+          ],
+        },
+      ],
+      modules: [
+        {
+          title: "1. Dashboards y Business Intelligence (BI)",
+          items: [
+            "Resumen Ejecutivo General: KPIs financieros y operativos en tiempo real, tendencias de ingresos y métodos de pago.",
+            "Ventas por Agencia y por Vendedor: Comparativas por sucursal, cumplimiento de metas y ranking de vendedores.",
+            "Dashboard de Stock e Inventarios: Valorización total de inventario, salud del stock y rotación de productos.",
+            "Estadísticas y Rentabilidad (BI): Análisis de márgenes de ganancia, costos vs. ventas y productos estrella.",
+            "Dashboard de RRHH: Métricas de asistencia, plantilla activa, ausentismo y horas extra.",
+          ],
+        },
+        {
+          title: "2. Sistemas, Seguridad y Multi-Sucursal",
+          items: [
+            "Seguridad y Accesos: Gestión de Usuarios, Roles y matriz de Permisos granulares con actualización en caliente vía WebSockets.",
+            "Agencias y Almacenes: Administración multi-sucursal y múltiples almacenes físicos o lógicos asociados por agencia.",
+            "Documentos por Agencia: Control de series de facturación, numeración y permisos de emisión por usuario/sucursal.",
+            "Configuración y Auditoría: Parámetros fiscales (NIT, moneda principal, impuestos) y Bitácora de Auditoría (IP, User-Agent, usuario y acción).",
+          ],
+        },
+        {
+          title: "3. Inventarios y Logística",
+          items: [
+            "Productos y Categorías: Catálogo maestro con SKU/códigos, precios, ítems inventariables vs. servicios y Ficha Técnica.",
+            "Stock Multi-Almacén y Alertas: Existencias por sucursal y alertas automáticas (Sin Stock, Stock Crítico, Stock Bajo).",
+            "Movimientos (Kardex): Historial transaccional de entradas, salidas y ajustes con costo promedio/unitario.",
+            "Transferencias entre Almacenes: Flujo completo de traspaso entre sucursales (pendiente, en tránsito, completado/anulado).",
+            "Toma de Inventarios (Conteos Físicos): Auditorías de stock físico vs. teórico con escáner de barras y conciliación.",
+          ],
+        },
+        {
+          title: "4. Ventas y Facturación",
+          items: [
+            "Proformas / Cotizaciones: Creación de cotizaciones comerciales, generación de PDF y conversión directa a factura.",
+            "Facturación: Emisión de facturas de venta con descuento automático de stock, múltiples métodos de cobro e impresión PDF.",
+            "Notas de Crédito / Débito: Gestión de devoluciones sobre ventas y ajustes comerciales.",
+            "Puntos de Venta (POS) y CUFD: Administración de cajas emisoras y códigos diarios de facturación.",
+            "Cartera de Clientes: Gestión de datos fiscales (NIT/CI, razón social), historial de compras y estado de cuenta.",
+          ],
+        },
+        {
+          title: "5. Compras y Cuentas por Pagar (CxP)",
+          items: [
+            "Proveedores y Órdenes de Compra: Gestión de proveedores y emisión de órdenes con flujo de aprobación.",
+            "Recepciones de Mercadería: Ingreso físico parcial o total conectado directamente con el Kardex de Inventarios.",
+            "Facturas de Proveedor y Devoluciones: Registro de compras fiscales y devoluciones a proveedor.",
+            "Cuentas por Pagar (CxP) y Reportes: Control de deudas, vencimientos, pagos parciales/totales e integración contable.",
+          ],
+        },
+        {
+          title: "6. Contabilidad, Tesorería, Caja y Bancos",
+          items: [
+            "Plan de Cuentas y Gestiones Fiscales: Árbol contable jerárquico multi-nivel, apertura y cierre de gestiones y períodos.",
+            "Comprobantes y Reglas de Asiento: Asientos de Ingreso, Egreso, Traspaso y Diario con motor automático de compras y ventas.",
+            "Cajas, Bancos y Arqueos Avanzados: Cuadre de saldo teórico vs. recuento físico por cortes de billetes/monedas (BOB y USD), QR, POS, transferencias y cheques.",
+            "Tipos de Cambio y Estados Financieros: Tasas diarias (oficial/comercial), Balance General, Estado de Resultados, Libro Mayor y Sumas y Saldos.",
+          ],
+        },
+        {
+          title: "7. Recursos Humanos y Portal de Autoservicio",
+          items: [
+            "Gestión de Capital Humano: Legajo de empleados, Departamentos, Cargos y contratos.",
+            "Tiempo y Asistencia: Turnos, horarios, marcaciones, ausencias/permisos/vacaciones, horas extra y calendario de feriados.",
+            "Portal de Autoservicio (/portal-boletas): Acceso rápido para empleados mediante PIN de 4 dígitos para consultar marcaciones, descargar boletas PDF y comunicados.",
+          ],
+        },
+        {
+          title: "8. Activos Fijos",
+          items: [
+            "Control de Activos: Catalogación, codificación, ubicación por agencia, asignación de responsables y estado de bienes de uso.",
+          ],
+        },
+      ],
+      milestones: [
+        {
+          period: "Julio 2026",
+          title: "Fundación y Arquitectura Base",
+          items: [
+            "Inicialización del frontend en Flutter (13/07) y backend en .NET 10 (24/07).",
+            "Implementación de Login JWT, estructura base de PostgreSQL y primer Dashboard.",
+          ],
+        },
+        {
+          period: "Agosto 2026",
+          title: "Módulos Core y Primer Despliegue Docker",
+          items: [
+            "Desarrollo del módulo de Sistemas & Seguridad (Usuarios, Roles, Permisos, Agencias y Almacenes) (09/08).",
+            "Lanzamiento del módulo de Inventarios (Productos, Categorías, Stock, Kardex y Transferencias) (13/08).",
+            "Creación de Dockerfile y configuración para despliegue en servidor (23/08).",
+          ],
+        },
+        {
+          period: "Septiembre 2026",
+          title: "Expansión Comercial, RRHH y Finanzas",
+          items: [
+            "Módulo completo de Ventas (Facturación, Proformas, Notas de Crédito/Débito, POS y PDF) (13/09).",
+            "Infraestructura transversal de Auditoría y Soft-Delete con recuperación de registros (14/09).",
+            "Módulo de RRHH (Empleados, Asistencias, Ausencias, Horas Extra) y Portal de Autoservicio con PIN (16/09 - 23/09).",
+            "Módulos de Compras y Contabilidad (Órdenes, Recepciones, Plan de Cuentas, Comprobantes) y Documentos por Agencia (27/09 - 30/09).",
+          ],
+        },
+        {
+          period: "Octubre 2026",
+          title: "Tiempo Real, Tesorería y Hardening de Seguridad",
+          items: [
+            "Despliegue optimizado con soporte de fuentes Linux para reportes PDF y Dashboards BI (14/10).",
+            "Infraestructura de notificaciones y permisos en Tiempo Real con SignalR (WebSockets) (27/10).",
+            "Módulo de Tesorería, Cajas y Cuentas Bancarias + Rate Limiting y seguridad RFC 7807 (28/10 - 29/10).",
+          ],
+        },
+        {
+          period: "Noviembre 2026 (Actualidad)",
+          title: "Toma de Inventarios, Arqueos y Optimización",
+          items: [
+            "Módulo de Toma de Inventarios / Conteos Físicos con soporte de escáner de códigos de barras (01/11).",
+            "Optimización de rendimiento (AsNoTracking, compresión HTTP Brotli/Gzip y mejoras de Design System) (02/11).",
+            "Módulos de Arqueos de Caja (con corte de billetaje BOB/USD) y Tipos de Cambio (08/11).",
+          ],
+        },
+      ],
+    },
+  },
+  {
     id: 1,
     company: "Pertec",
     position: "Analista Informático",

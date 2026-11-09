@@ -44,7 +44,7 @@ export const skillCategories = [
       { name: "Express.js", level: 85 },
       { name: "Ruby on Rails", level: 80 },
       { name: "Spring Boot", level: 70 },
-      { name: ".Net 6", level: 75 },
+      { name: ".NET 10 / .NET 6", level: 85 },
     ],
   },
   {
@@ -73,7 +73,7 @@ export const skillCategories = [
     icon: Smartphone,
     color: "bg-purple-600",
     skills: [
-      { name: "Flutter", level: 50 },
+      { name: "Flutter (Web & Mobile)", level: 85 },
       { name: "Android Studio", level: 55 },
       { name: "Java", level: 50 },
     ],

@@ -12,6 +12,37 @@ export interface Project {
   featured: boolean;
 }
 
+export interface ExperienceCaseStudy {
+  summary: string;
+  portalUrl?: string;
+  apiEndpoint?: string;
+  signalrHub?: string;
+  demoCredentials?: {
+    user: string;
+    password: string;
+    note?: string;
+  };
+  repoStats?: {
+    name: string;
+    firstCommit: string;
+    lastCommit: string;
+    totalCommits: string;
+  }[];
+  architectureLayers?: {
+    title: string;
+    items: string[];
+  }[];
+  modules?: {
+    title: string;
+    items: string[];
+  }[];
+  milestones?: {
+    period: string;
+    title: string;
+    items: string[];
+  }[];
+}
+
 export interface Experience {
   id: number;
   company: string;
@@ -21,6 +52,7 @@ export interface Experience {
   githubUrl?: string;
   liveUrl?: string;
   technologies: string[];
+  caseStudy?: ExperienceCaseStudy;
 }
 
 export interface Skill {

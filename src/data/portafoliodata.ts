@@ -2,6 +2,27 @@ import { Project } from "../types";
 
 export const projects: Project[] = [
   {
+    id: 0,
+    title: "WR Inventory ERP — Sistema ERP Empresarial Multi-Agencia y Multi-Almacén",
+    description:
+      "Plataforma empresarial integral (Full-Stack) multi-sucursal y multi-almacén en Flutter Web y Monolito Modular en .NET 10 (ASP.NET Core) con PostgreSQL, Clean Architecture, DDD, CQRS y SignalR en tiempo real. Integra Inventarios, Ventas, Compras, CxP, Contabilidad, Tesorería/Arqueos, RRHH (/portal-boletas), Activos Fijos y BI.",
+    image:
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600",
+    technologies: [
+      "Flutter Web",
+      ".NET 10",
+      "PostgreSQL",
+      "SignalR",
+      "Clean Architecture",
+      "CQRS & DDD",
+      "Docker",
+      "ECharts",
+    ],
+    category: "fullstack",
+    liveUrl: "http://13.140.134.191",
+    featured: true,
+  },
+  {
     id: 1,
     title: "E-Commerce Platform",
     description:
