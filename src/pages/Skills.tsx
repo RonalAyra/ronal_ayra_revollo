@@ -1,11 +1,11 @@
 import { useState, useMemo } from "react";
-import { Code2, Search, X, RotateCcw } from "lucide-react";
+import { Code2, Search, X, RotateCcw, Filter, ChevronDown } from "lucide-react";
 import SkillCategoryItem from "../components/skills/SkillCategoryItem";
 import TechSkillItem from "../components/skills/TechSkillItem";
 import { skillCategories, techSkills } from "../data/skillsdata";
 
 const CATEGORY_GROUPS = [
-  { id: "all", label: "Todas" },
+  { id: "all", label: "Todas las áreas (11 categorías)" },
   {
     id: "frontend",
     label: "Frontend & UI",
@@ -83,34 +83,33 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Barra de filtros y búsqueda */}
-        <div className="mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
-          <div
-            className="flex flex-wrap items-center gap-2"
-            role="group"
-            aria-label="Filtrar habilidades por área"
-          >
-            {CATEGORY_GROUPS.map((group) => {
-              const isActive = selectedGroup === group.id;
-              return (
-                <button
-                  key={group.id}
-                  type="button"
-                  onClick={() => setSelectedGroup(group.id)}
-                  aria-pressed={isActive}
-                  className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "bg-blue-600 text-white shadow-sm"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                  }`}
-                >
+        {/* Barra de filtros en una sola fila: Select a la izquierda y Buscador a la derecha */}
+        <div className="mb-10 flex flex-row items-center justify-between gap-3 sm:gap-4 bg-white dark:bg-slate-900 p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          <div className="relative flex-1 sm:flex-initial sm:w-72">
+            <Filter
+              size={15}
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-blue-600 dark:text-blue-400 pointer-events-none"
+            />
+            <select
+              id="skills-category-select"
+              value={selectedGroup}
+              onChange={(e) => setSelectedGroup(e.target.value)}
+              aria-label="Filtrar habilidades por área técnica"
+              className="w-full appearance-none pl-9 pr-9 py-2.5 text-sm font-medium rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:border-blue-400 dark:hover:border-blue-500 transition-colors cursor-pointer"
+            >
+              {CATEGORY_GROUPS.map((group) => (
+                <option key={group.id} value={group.id}>
                   {group.label}
-                </button>
-              );
-            })}
+                </option>
+              ))}
+            </select>
+            <ChevronDown
+              size={16}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+            />
           </div>
 
-          <div className="relative w-full md:w-72">
+          <div className="relative flex-1 sm:flex-initial sm:w-72">
             <Search
               size={16}
               className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
@@ -121,7 +120,7 @@ const Skills = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Buscar tecnología (ej. Laravel)..."
               aria-label="Buscar tecnología"
-              className="w-full pl-9 pr-9 py-2 text-sm rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400"
+              className="w-full pl-9 pr-9 py-2.5 text-sm rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400"
             />
             {searchQuery && (
               <button

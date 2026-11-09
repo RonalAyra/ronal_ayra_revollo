@@ -11,9 +11,7 @@ import {
   ExternalLink,
   Calendar,
   Building2,
-  LayoutList,
-  Table2,
-  Eye,
+  Filter,
 } from "lucide-react";
 import { experiences } from "../data/experiencedata";
 import CardExperienceItem from "../components/experience/CardExperienceItem";
@@ -25,7 +23,13 @@ const TECH_FILTERS = [
   "Vue",
   "React",
   ".NET 6",
+  "Angular",
   "NestJS",
+  "Flutter",
+  "SQL Server",
+  "PostgreSQL",
+  "MySQL",
+  "MongoDB",
   "SIAT",
 ];
 
@@ -33,7 +37,6 @@ const ExperienceSection = () => {
   const [showAll, setShowAll] = useState(false);
   const [selectedTech, setSelectedTech] = useState("Todas");
   const [searchQuery, setSearchQuery] = useState("");
-  const [viewMode, setViewMode] = useState<"timeline" | "table">("timeline");
   const [selectedExperience, setSelectedExperience] =
     useState<Experience | null>(null);
 
@@ -116,124 +119,62 @@ const ExperienceSection = () => {
           </p>
         </div>
 
-        {/* Barra de herramientas: filtros, búsqueda y selector de vista */}
-        <div className="mb-10 bg-slate-50 dark:bg-slate-800/70 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 space-y-4">
-          <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
-            <div
-              className="flex flex-wrap items-center gap-2"
-              role="group"
+        {/* Barra de filtros en una sola fila: Select a la izquierda y Buscador a la derecha */}
+        <div className="mb-10 flex flex-row items-center justify-between gap-3 sm:gap-4 bg-slate-50 dark:bg-slate-800/70 p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+          <div className="relative flex-1 sm:flex-initial sm:w-72">
+            <Filter
+              size={15}
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-blue-600 dark:text-blue-400 pointer-events-none"
+            />
+            <select
+              id="experience-tech-select"
+              value={selectedTech}
+              onChange={(e) => setSelectedTech(e.target.value)}
               aria-label="Filtrar experiencias por tecnología"
+              className="w-full appearance-none pl-9 pr-9 py-2.5 text-sm font-medium rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:border-blue-400 dark:hover:border-blue-500 transition-colors cursor-pointer"
             >
-              {TECH_FILTERS.map((tech) => {
-                const isActive = selectedTech === tech;
-                return (
-                  <button
-                    key={tech}
-                    type="button"
-                    onClick={() => setSelectedTech(tech)}
-                    aria-pressed={isActive}
-                    className={`px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-colors duration-200 ${
-                      isActive
-                        ? "bg-blue-600 text-white shadow-sm"
-                        : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 hover:border-blue-400"
-                    }`}
-                  >
-                    {tech}
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <div className="relative flex-1 sm:w-64">
-                <Search
-                  size={16}
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
-                />
-                <input
-                  type="search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Buscar empresa, rol o stack..."
-                  aria-label="Buscar en experiencias"
-                  className="w-full pl-9 pr-9 py-2 text-sm rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400"
-                />
-                {searchQuery && (
-                  <button
-                    type="button"
-                    onClick={() => setSearchQuery("")}
-                    aria-label="Limpiar búsqueda"
-                    title="Limpiar búsqueda"
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-md"
-                  >
-                    <X size={14} />
-                  </button>
-                )}
-              </div>
-
-              <div
-                className="inline-flex rounded-xl bg-white dark:bg-slate-900 p-1 border border-slate-200 dark:border-slate-700 self-start sm:self-auto"
-                role="group"
-                aria-label="Cambiar modo de visualización"
-              >
-                <button
-                  type="button"
-                  onClick={() => setViewMode("timeline")}
-                  aria-pressed={viewMode === "timeline"}
-                  title="Vista de línea de tiempo"
-                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                    viewMode === "timeline"
-                      ? "bg-blue-600 text-white"
-                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                  }`}
-                >
-                  <LayoutList size={14} />
-                  <span>Cronología</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setViewMode("table")}
-                  aria-pressed={viewMode === "table"}
-                  title="Vista de tabla compacta"
-                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                    viewMode === "table"
-                      ? "bg-blue-600 text-white"
-                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                  }`}
-                >
-                  <Table2 size={14} />
-                  <span>Tabla</span>
-                </button>
-              </div>
-            </div>
+              {TECH_FILTERS.map((tech) => (
+                <option key={tech} value={tech}>
+                  {tech === "Todas"
+                    ? "Todas las tecnologías"
+                    : `Tecnología: ${tech}`}
+                </option>
+              ))}
+            </select>
+            <ChevronDown
+              size={16}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+            />
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-200/60 dark:border-slate-700/60 text-xs text-slate-500 dark:text-slate-400">
-            <span>
-              Mostrando{" "}
-              <strong className="font-semibold text-slate-800 dark:text-slate-200 tabular-nums">
-                {displayedExperiences.length}
-              </strong>{" "}
-              de{" "}
-              <strong className="font-semibold text-slate-800 dark:text-slate-200 tabular-nums">
-                {filteredExperiences.length}
-              </strong>{" "}
-              registros
-            </span>
-            {isFiltering && (
+          <div className="relative flex-1 sm:flex-initial sm:w-72">
+            <Search
+              size={16}
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+            />
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Buscar empresa, rol o stack..."
+              aria-label="Buscar en experiencias"
+              className="w-full pl-9 pr-9 py-2.5 text-sm rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400"
+            />
+            {searchQuery && (
               <button
                 type="button"
-                onClick={handleResetFilters}
-                className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                onClick={() => setSearchQuery("")}
+                aria-label="Limpiar búsqueda"
+                title="Limpiar búsqueda"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-md"
               >
-                <RotateCcw size={12} />
-                <span>Limpiar filtros activos</span>
+                <X size={14} />
               </button>
             )}
           </div>
         </div>
 
-        {/* Contenido principal: Línea de tiempo, Tabla o Estado Vacío */}
+        {/* Contenido principal: Línea de tiempo o Estado Vacío */}
         {displayedExperiences.length === 0 ? (
           <div className="text-center py-12 px-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200/80 dark:border-slate-700/80">
             <p className="text-base font-semibold text-slate-800 dark:text-slate-200 mb-1">
@@ -252,7 +193,7 @@ const ExperienceSection = () => {
               <span>Restablecer filtros</span>
             </button>
           </div>
-        ) : viewMode === "timeline" ? (
+        ) : (
           <div className="relative">
             {displayedExperiences.map((exp, index) => (
               <CardExperienceItem
@@ -262,89 +203,6 @@ const ExperienceSection = () => {
                 onSelect={setSelectedExperience}
               />
             ))}
-          </div>
-        ) : (
-          <div className="bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-slate-50 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-700 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                    <th className="py-3.5 px-4 text-right w-12">#</th>
-                    <th className="py-3.5 px-4">Empresa / Proyecto</th>
-                    <th className="py-3.5 px-4">Cargo / Rol</th>
-                    <th className="py-3.5 px-4 whitespace-nowrap">Periodo</th>
-                    <th className="py-3.5 px-4">Tecnologías</th>
-                    <th className="py-3.5 px-4 text-right whitespace-nowrap">
-                      Tareas
-                    </th>
-                    <th className="py-3.5 px-4 text-right whitespace-nowrap">
-                      Acciones
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-200/70 dark:divide-slate-700/70 text-sm">
-                  {displayedExperiences.map((exp, idx) => (
-                    <tr
-                      key={exp.id}
-                      className="hover:bg-slate-50/80 dark:hover:bg-slate-700/40 transition-colors"
-                    >
-                      <td className="py-3.5 px-4 text-right font-mono text-xs text-slate-400 tabular-nums">
-                        {idx + 1}
-                      </td>
-                      <td className="py-3.5 px-4 font-semibold text-slate-900 dark:text-white">
-                        {exp.company}
-                      </td>
-                      <td className="py-3.5 px-4 text-slate-700 dark:text-slate-300">
-                        {exp.position}
-                      </td>
-                      <td className="py-3.5 px-4 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                        {exp.period}
-                      </td>
-                      <td className="py-3.5 px-4">
-                        <div className="flex flex-wrap gap-1 max-w-xs">
-                          {exp.technologies.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </td>
-                      <td className="py-3.5 px-4 text-right font-medium text-slate-600 dark:text-slate-300 tabular-nums">
-                        {exp.description.length}
-                      </td>
-                      <td className="py-3.5 px-4 text-right whitespace-nowrap">
-                        <div className="inline-flex items-center justify-end gap-1.5">
-                          {exp.liveUrl && (
-                            <a
-                              href={exp.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              title={`Abrir sitio web de ${exp.company}`}
-                              aria-label={`Abrir sitio web de ${exp.company}`}
-                              className="p-1.5 rounded-lg text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/60 transition-colors"
-                            >
-                              <ExternalLink size={15} />
-                            </a>
-                          )}
-                          <button
-                            type="button"
-                            onClick={() => setSelectedExperience(exp)}
-                            title="Ver detalle completo"
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-colors"
-                          >
-                            <Eye size={13} />
-                            <span>Ver</span>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
           </div>
         )}
 

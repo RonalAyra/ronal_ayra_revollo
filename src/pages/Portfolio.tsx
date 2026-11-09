@@ -1,20 +1,36 @@
 import { useState } from "react";
 import { FolderGit2, RotateCcw } from "lucide-react";
 import { filters, projects } from "../data/portafoliodata";
+import FilterProject from "../components/portafolio/FilterProject";
 import ProjectOtherItem from "../components/portafolio/ProjectOtherItem";
 import ProjectFeaturedItem from "../components/portafolio/ProjectFeaturedItem";
-import FilterProject from "../components/portafolio/FilterProject";
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProjects =
-    activeFilter === "all"
-      ? projects
-      : projects.filter((project) => project.category === activeFilter);
+  const query = searchQuery.trim().toLowerCase();
+
+  const filteredProjects = projects.filter((project) => {
+    const matchesCategory =
+      activeFilter === "all" || project.category === activeFilter;
+    if (!matchesCategory) return false;
+    if (!query) return true;
+
+    return (
+      project.title.toLowerCase().includes(query) ||
+      project.description.toLowerCase().includes(query) ||
+      project.technologies.some((t) => t.toLowerCase().includes(query))
+    );
+  });
 
   const featuredProjects = filteredProjects.filter((p) => p.featured);
   const otherProjects = filteredProjects.filter((p) => !p.featured);
+
+  const handleResetFilters = () => {
+    setActiveFilter("all");
+    setSearchQuery("");
+  };
 
   return (
     <section
@@ -33,37 +49,31 @@ const Portfolio = () => {
               Portafolio
             </span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
             Proyectos destacados que demuestran mis habilidades y experiencia
           </p>
-          <div
-            className="flex flex-wrap justify-center gap-2"
-            role="group"
-            aria-label="Filtrar proyectos por categoría"
-          >
-            {filters.map((filter) => (
-              <FilterProject
-                key={filter.id}
-                activeFilter={activeFilter}
-                setActiveFilter={setActiveFilter}
-                item={filter}
-              />
-            ))}
-          </div>
         </div>
+
+        <FilterProject
+          filters={filters}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
 
         {filteredProjects.length === 0 ? (
           <div className="text-center py-12 px-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800">
             <p className="text-base font-semibold text-slate-800 dark:text-slate-200 mb-2">
-              No hay proyectos en esta categoría
+              No se encontraron proyectos con los criterios actuales
             </p>
             <button
               type="button"
-              onClick={() => setActiveFilter("all")}
+              onClick={handleResetFilters}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-colors"
             >
               <RotateCcw size={15} />
-              <span>Ver todos los proyectos</span>
+              <span>Restablecer filtros</span>
             </button>
           </div>
         ) : (
