@@ -395,16 +395,157 @@ export const experiences: Experience[] = [
   },
   {
     id: 17,
-    company: "Confecciones Ayra",
-    position: "CMS y Landing de Confecciones Ayra",
-    period: "Mayo 2024",
+    company: "AYRA Confecciones — Plataforma Integral de Alta Costura, Sastrería a Medida y Backoffice",
+    position: "Full Stack Architect & Developer (React 18, Vue 3, NestJS & MongoDB)",
+    period: "Mayo 2024 – Actualidad (Modernización & Deploy en Producción)",
+    liveUrl: "http://13.140.134.191:8085",
     description: [
-      "Desarrollo frontend de la landing page utilizando React.",
-      "Implementación del frontend del panel administrativo (cliente) con Vue.js.",
-      "Desarrollo de APIs RESTful con NestJS, integrando la comunicación entre cliente y servidor.",
+      "Ecosistema web completo (Full-Stack) para sastrería a medida y alta costura, compuesto por una web pública comercial moderna (React 18), un panel administrativo backoffice (Vue 3 + Vite) y una API RESTful modular (NestJS 10) con base de datos MongoDB 7.",
+      "Frontend Público (web-ayra) en React 18 con React Router v6, arquitectura de componentes modular y Design System propio de alta costura (paleta Obsidiana, Dorado Champagne y Marfil con tipografías Playfair Display y Plus Jakarta Sans), Sticky Navbar con efecto Glassmorphism, catálogo interactivo con filtros por categoría, búsqueda instantánea, modal de vista rápida y cotización directa vinculada a la API de WhatsApp Business.",
+      "Backoffice Administrativo (oauth) en Vue 3, TypeScript y Vite, diseñado con estética luxury dark editorial, navegación SPA reactiva sin recargas de página (<router-link>), dashboard analítico con KPIs ejecutivos en tiempo real (prendas, ofertas, precio promedio y usuarios) y gráficos interactivos con Chart.js.",
+      "Backend (apis-oauth) en NestJS 10 estructurado en módulos aislados para clientes (/api/v1) y administración (/api/admin/v1), serialización estricta mediante MongooseClassSerializerInterceptor, autenticación JWT con Passport Guards, encriptación BCrypt, hooks pre-save en esquemas Mongoose y sistema de auto-seeding para aprovisionar al administrador por defecto en el primer arranque.",
+      "Autodetección dinámica de endpoints en runtime en ambos frontends (window.location.origin) que redirige el tráfico hacia el proxy inverso de Nginx, eliminando bloqueos de CORS entre entornos de desarrollo local y producción en la nube.",
+      "Despliegue y containerización en VPS Linux (Contabo) mediante Docker Compose con 4 microservicios en red privada aislada (ayra_network): contenedores Nginx Alpine ligeros con volumen montado en vivo para actualizaciones con 0 segundos de downtime y contenedor de MongoDB 7 con límite estricto de memoria (512MB RAM y caché WiredTiger de 0.25GB) para convivir en paralelo con el ERP del servidor sin colisión de puertos.",
     ],
-    technologies: ["React.js", "Vue.js", "NestJS", "MongoDB"],
-    liveUrl: "https://ayra-4b7d7.web.app/",
+    technologies: [
+      "React 18",
+      "Vue 3",
+      "TypeScript",
+      "NestJS 10",
+      "MongoDB 7",
+      "Mongoose",
+      "Vite",
+      "Docker",
+      "Nginx",
+      "Chart.js",
+      "JWT & Passport",
+      "SCSS",
+    ],
+    caseStudy: {
+      summary:
+        "Diseñé y modernicé de forma integral la plataforma digital de AYRA Confecciones, un atelier especializado en trajes de etiqueta, novios y prendas a medida. El proyecto unifica una experiencia visual de lujo para el cliente final en React 18 con un centro de control operativo en Vue 3 y una arquitectura backend desacoplada en NestJS 10 sobre MongoDB 7. Ambos frontends fueron optimizados con Nginx Alpine y proxies inversos que garantizan tiempos de carga ultrarrápidos, mientras que el backend incorpora validaciones DTO, seguridad criptográfica y un despliegue multi-contenedor optimizado para servidores con recursos compartidos.",
+      portalUrl: "http://13.140.134.191:8086",
+      apiEndpoint: "http://13.140.134.191:8085/api/v1",
+      demoCredentials: {
+        user: "admin@ayra.com",
+        password: "Admin123!@#",
+        note: "Credenciales de Acceso al Backoffice (Seeder Automático)",
+      },
+      repoStats: [
+        {
+          name: "Web Pública (web-ayra)",
+          firstCommit: "Mayo 2024",
+          lastCommit: "Noviembre 2026 (Rediseño Haute Couture & WhatsApp API)",
+          totalCommits: "45 commits",
+        },
+        {
+          name: "Backoffice (oauth)",
+          firstCommit: "Mayo 2024",
+          lastCommit: "Noviembre 2026 (Migración Luxury Dark & Chart.js BI)",
+          totalCommits: "38 commits",
+        },
+        {
+          name: "Backend API (apis-oauth)",
+          firstCommit: "Mayo 2024",
+          lastCommit: "Noviembre 2026 (Node 25 Polyfill & Seeder Automático)",
+          totalCommits: "42 commits",
+        },
+      ],
+      architectureLayers: [
+        {
+          title: "Frontend Comercial (web-ayra)",
+          items: [
+            "Framework & Core: React 18 SPA con React Router v6 y empaquetado optimizado en Webpack/React-Scripts.",
+            "Design System: Identidad visual Haute Couture & Tailoring (Playfair Display + Plus Jakarta Sans) con variables CSS semánticas, cards con efecto hover y paleta Obsidiana/Dorado.",
+            "Experiencia de Usuario: Hero editorial con métricas sartoriales, catálogo filtrable con búsqueda en tiempo real, modal de vista rápida con ficha de producto y formulario de reserva con pre-selección de prenda.",
+            "Integraciones: Generador dinámico de enlaces directos a WhatsApp Business (+591 68788807) con mensaje estructurado de cotización.",
+          ],
+        },
+        {
+          title: "Backoffice Administrativo (oauth)",
+          items: [
+            "Framework & Tooling: Vue 3 (Composition API con <script setup lang='ts'>), TypeScript y Vite 5.",
+            "Navegación & Estado: Vue Router 4 con guardias de autenticación global (ifAuthenticated), enlaces reactivos <router-link> sin recarga y persistencia de sesión JWT en LocalStorage.",
+            "Visualización de Datos: Dashboards ejecutivos con Chart.js y vue-chartjs (distribución por rango de precios en Bs. y ratio de prendas en oferta).",
+            "Gestión CRUD: Tablas de datos con badges de estado, modal reactivo para creación/edición, previsualización de imágenes base64 y alertas con SweetAlert2.",
+          ],
+        },
+        {
+          title: "Backend API (apis-oauth)",
+          items: [
+            "Framework & Lenguaje: NestJS 10 bajo arquitectura modular en TypeScript.",
+            "Separación de Contextos: Controladores públicos en ApiModule (/api/v1) y módulos administrativos protegidos en AdminModule (/api/admin/v1).",
+            "Persistencia: Mongoose 8 sobre MongoDB 7 con esquemas tipados (Product, User, Post), paginación por agregación y pre-hooks de encriptación.",
+            "Seguridad & Serialización: Estrategia Passport JWT, Guards de ruta, interceptor MongooseClassSerializerInterceptor y soporte de Node 25+ mediante polyfills de buffer.",
+          ],
+        },
+        {
+          title: "DevOps e Infraestructura Cloud",
+          items: [
+            "Orquestación: Docker Compose con red bridge dedicada (ayra_network) y 4 contenedores (ayra_web, ayra_admin, ayra_backend, ayra_mongo).",
+            "Servidor Web: Doble proxy inverso Nginx Alpine con compresión Gzip, caché inmutable de estáticos y reescritura de rutas SPA (try_files $uri /index.html).",
+            "Hosting: Coexistencia en VPS Linux (Contabo) sin interferir con otros proyectos mediante asignación estratégica de puertos (8085 para web, 8086 para admin, 3005 para API y 27017 interno para Mongo).",
+            "Resiliencia: Límite estricto de memoria para MongoDB (512M) y healthchecks automáticos con mongosh.",
+          ],
+        },
+      ],
+      modules: [
+        {
+          title: "1. Web Comercial y Catálogo Interactivo (web-ayra)",
+          items: [
+            "Landing Page de Alta Costura: Banner Hero con propuesta de valor, sección de filosofía del atelier y pilares de excelencia.",
+            "Catálogo Dinámico: Vista en cuadrícula con tarjetas de producto, etiqueta de precio en Bs., distintivos de oferta y modal de detalle rápido.",
+            "Cotizador & Reserva de Citas: Formulario inteligente que captura servicio, modelo de interés y fecha estimada, generando un enlace estructurado hacia WhatsApp y correo.",
+            "Página Sobre Nosotros: Muestra del taller, proceso de confección artesanal en 4 pasos y canales de contacto directo.",
+          ],
+        },
+        {
+          title: "2. Gestión de Catálogo e Inventario (Backoffice)",
+          items: [
+            "CRUD Maestro de Prendas: Registro, edición y eliminación de trajes, smokings y vestidos de alta costura.",
+            "Control de Promociones: Activación/desactivación de ofertas y cálculo porcentual de descuento.",
+            "Gestor Multimedia: Carga de fotos de prendas con vista previa en tiempo real antes de guardar.",
+            "Filtros de Inventario: Segmentación instantánea por estado activo/pausado y por artículos en oferta.",
+          ],
+        },
+        {
+          title: "3. Seguridad y Gestión de Usuarios (Backoffice)",
+          items: [
+            "Control de Accesos: Administración de cuentas con roles jerárquicos (Administrador vs. Sastre/Cliente).",
+            "Perfil del Administrador: Modal para actualización de datos personales, correo, cambio seguro de contraseña y foto de perfil.",
+            "Cierre de Sesión Seguro: Revocación de tokens en cliente y limpieza de estado de aplicación.",
+          ],
+        },
+        {
+          title: "4. Dashboard Analítico y Reportes (Backoffice)",
+          items: [
+            "KPIs en Tiempo Real: Tarjetas de resumen con conteo total de prendas en catálogo, prendas activas, ofertas y usuarios.",
+            "Métricas Financieras: Estimación del precio promedio del inventario en moneda local (Bs.).",
+            "Gráficos Interactivos: Gráfico de barras para distribución de prendas por rango de costo y gráfico de pastel para el balance de promociones.",
+          ],
+        },
+      ],
+      milestones: [
+        {
+          period: "Mayo 2024",
+          title: "Lanzamiento Inicial",
+          items: [
+            "Desarrollo de la primera versión de la landing en React y backend en NestJS.",
+            "Implementación del panel básico en Vue.js con autenticación.",
+          ],
+        },
+        {
+          period: "Noviembre 2026",
+          title: "Modernización Integral y Despliegue en VPS Contabo",
+          items: [
+            "Rediseño completo de la interfaz de usuario en React con estética Haute Couture y tipografías editoriales.",
+            "Reestructuración del Backoffice en Vue 3 con navegación SPA fluida (<router-link>), KPIs ejecutivos y gráficos Chart.js.",
+            "Resolución de compatibilidad con Node.js 25+ en NestJS y creación de seeder automático para el usuario administrador.",
+            "Despliegue multi-contenedor en Docker Compose sobre Contabo VPS (:8085 web, :8086 admin, :3005 API y MongoDB 7) conviviendo en paralelo con el ERP.",
+          ],
+        },
+      ],
+    },
   },
   {
     id: 18,
