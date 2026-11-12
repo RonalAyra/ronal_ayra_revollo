@@ -137,18 +137,18 @@ const ExperienceSection = () => {
         </div>
 
         {/* Barra de filtros en una sola fila: Select a la izquierda y Buscador a la derecha */}
-        <div className="mb-10 flex flex-row items-center justify-between gap-3 sm:gap-4 bg-slate-50 dark:bg-slate-800/70 p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
-          <div className="relative flex-1 sm:flex-initial sm:w-72">
+        <div className="mb-10 flex flex-row items-center justify-between gap-2 sm:gap-4 bg-slate-50 dark:bg-slate-800/70 p-3 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+          <div className="relative flex-1 min-w-0 sm:max-w-xs">
             <Filter
-              size={15}
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-blue-600 dark:text-blue-400 pointer-events-none"
+              size={14}
+              className="absolute left-3 sm:left-3.5 top-1/2 -translate-y-1/2 text-blue-600 dark:text-blue-400 pointer-events-none"
             />
             <select
               id="experience-tech-select"
               value={selectedTech}
               onChange={(e) => setSelectedTech(e.target.value)}
               aria-label="Filtrar experiencias por tecnología"
-              className="w-full appearance-none pl-9 pr-9 py-2.5 text-sm font-medium rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:border-blue-400 dark:hover:border-blue-500 transition-colors cursor-pointer"
+              className="w-full appearance-none pl-8 sm:pl-9 pr-7 sm:pr-9 py-2 sm:py-2.5 text-xs sm:text-sm font-medium rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:border-blue-400 dark:hover:border-blue-500 transition-colors cursor-pointer truncate"
             >
               {TECH_FILTERS.map((tech) => (
                 <option key={tech} value={tech}>
@@ -159,23 +159,23 @@ const ExperienceSection = () => {
               ))}
             </select>
             <ChevronDown
-              size={16}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+              size={15}
+              className="absolute right-2.5 sm:right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
             />
           </div>
 
-          <div className="relative flex-1 sm:flex-initial sm:w-72">
+          <div className="relative flex-1 min-w-0 sm:max-w-xs">
             <Search
-              size={16}
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+              size={15}
+              className="absolute left-3 sm:left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
             />
             <input
               type="search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar empresa, rol o stack..."
+              placeholder="Buscar empresa o stack..."
               aria-label="Buscar en experiencias"
-              className="w-full pl-9 pr-9 py-2.5 text-sm rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400"
+              className="w-full pl-8 sm:pl-9 pr-7 sm:pr-9 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400"
             />
             {searchQuery && (
               <button
@@ -183,7 +183,7 @@ const ExperienceSection = () => {
                 onClick={() => setSearchQuery("")}
                 aria-label="Limpiar búsqueda"
                 title="Limpiar búsqueda"
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-md"
+                className="absolute right-2 sm:right-2.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-md"
               >
                 <X size={14} />
               </button>
@@ -296,7 +296,7 @@ const ExperienceSection = () => {
       {/* Modal de detalle de experiencia */}
       {selectedExperience && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fadeInUp"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm animate-fadeInUp"
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-experience-title"
@@ -305,25 +305,25 @@ const ExperienceSection = () => {
           <div
             className={`bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xl ${
               selectedExperience.caseStudy ? "max-w-4xl" : "max-w-2xl"
-            } w-full max-h-[90vh] flex flex-col overflow-hidden`}
+            } w-full max-h-[92vh] flex flex-col overflow-hidden`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Encabezado del modal */}
-            <div className="flex items-start justify-between gap-4 p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800">
-              <div>
+            <div className="flex items-start justify-between gap-3 sm:gap-4 p-4 sm:p-6 border-b border-slate-200 dark:border-slate-800">
+              <div className="min-w-0">
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-700 dark:bg-blue-950/80 dark:text-blue-300 mb-2">
                   <Calendar size={13} />
                   <span>{selectedExperience.period}</span>
                 </div>
                 <h3
                   id="modal-experience-title"
-                  className="text-xl font-bold text-slate-900 dark:text-white leading-snug"
+                  className="text-base sm:text-xl font-bold text-slate-900 dark:text-white leading-snug break-words"
                 >
                   {selectedExperience.position}
                 </h3>
-                <div className="flex items-center gap-1.5 text-sm font-semibold text-slate-600 dark:text-slate-300 mt-1">
-                  <Building2 size={15} className="text-blue-600 dark:text-blue-400" />
-                  <span>{selectedExperience.company}</span>
+                <div className="flex items-start sm:items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 mt-1">
+                  <Building2 size={15} className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5 sm:mt-0" />
+                  <span className="break-words">{selectedExperience.company}</span>
                 </div>
               </div>
               <button
@@ -331,14 +331,14 @@ const ExperienceSection = () => {
                 onClick={() => setSelectedExperience(null)}
                 aria-label="Cerrar ventana de detalle"
                 title="Cerrar (Esc)"
-                className="p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0"
               >
                 <X size={20} />
               </button>
             </div>
 
             {/* Cuerpo del modal */}
-            <div className="p-5 sm:p-6 overflow-y-auto space-y-6">
+            <div className="p-4 sm:p-6 overflow-y-auto space-y-6">
               {selectedExperience.caseStudy && (
                 <>
                   {/* Resumen Detallado del Caso de Estudio */}
@@ -414,11 +414,11 @@ const ExperienceSection = () => {
                     {selectedExperience.caseStudy.demoCredentials && (
                       <div className="grid sm:grid-cols-2 gap-3 pt-1">
                         <div className="flex items-center justify-between gap-2 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700 text-xs">
-                          <div>
+                          <div className="min-w-0 flex-1">
                             <span className="text-slate-500 dark:text-slate-400 block">
                               Usuario Demo:
                             </span>
-                            <strong className="font-mono text-slate-900 dark:text-white">
+                            <strong className="font-mono text-slate-900 dark:text-white break-all">
                               {selectedExperience.caseStudy.demoCredentials.user}
                             </strong>
                           </div>
@@ -430,7 +430,7 @@ const ExperienceSection = () => {
                                 "user"
                               )
                             }
-                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white transition-colors"
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white transition-colors flex-shrink-0"
                           >
                             {copiedField === "user" ? (
                               <>
@@ -447,11 +447,11 @@ const ExperienceSection = () => {
                         </div>
 
                         <div className="flex items-center justify-between gap-2 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700 text-xs">
-                          <div>
+                          <div className="min-w-0 flex-1">
                             <span className="text-slate-500 dark:text-slate-400 block">
                               Contraseña Demo:
                             </span>
-                            <strong className="font-mono text-slate-900 dark:text-white">
+                            <strong className="font-mono text-slate-900 dark:text-white break-all">
                               {selectedExperience.caseStudy.demoCredentials.password}
                             </strong>
                           </div>
@@ -463,7 +463,7 @@ const ExperienceSection = () => {
                                 "pass"
                               )
                             }
-                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white transition-colors"
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white transition-colors flex-shrink-0"
                           >
                             {copiedField === "pass" ? (
                               <>
@@ -654,13 +654,13 @@ const ExperienceSection = () => {
             </div>
 
             {/* Acciones del modal */}
-            <div className="flex flex-wrap items-center justify-end gap-3 p-4 sm:p-5 bg-slate-50 dark:bg-slate-800/60 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-end gap-2.5 sm:gap-3 p-4 sm:p-5 bg-slate-50 dark:bg-slate-800/60 border-t border-slate-200 dark:border-slate-800">
               {selectedExperience.caseStudy?.portalUrl && (
                 <a
                   href={selectedExperience.caseStudy.portalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-teal-600 hover:bg-teal-700 text-white transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold bg-teal-600 hover:bg-teal-700 text-white transition-colors"
                 >
                   <Users size={16} />
                   <span>Portal Autoservicio RRHH</span>
@@ -671,7 +671,7 @@ const ExperienceSection = () => {
                   href={selectedExperience.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-colors"
                 >
                   <ExternalLink size={16} />
                   <span>
@@ -684,7 +684,7 @@ const ExperienceSection = () => {
               <button
                 type="button"
                 onClick={() => setSelectedExperience(null)}
-                className="px-4 py-2 rounded-xl text-sm font-semibold bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 transition-colors"
+                className="px-4 py-2.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 transition-colors"
               >
                 Cerrar
               </button>

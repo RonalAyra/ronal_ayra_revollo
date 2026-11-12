@@ -61,7 +61,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-900 text-white pt-24 pb-16 lg:py-24"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-900 text-white pt-24 pb-24 sm:pb-28 lg:py-24"
     >
       <img
         src={bannerImage}
@@ -184,20 +184,20 @@ const Hero = () => {
 
           {/* Columna derecha: Estudio 3D Interactivo + Resumen Profesional */}
           <div className="lg:col-span-5">
-            <div className="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-5 sm:p-6 backdrop-blur-md shadow-xl space-y-5">
+            <div className="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-4 sm:p-6 backdrop-blur-md shadow-xl space-y-4 sm:space-y-5">
               {/* Encabezado con selector de modo */}
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 min-w-0">
                   <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white flex-shrink-0">
                     {activeTab === "3d" ? <Box size={20} /> : <Code2 size={20} />}
                   </div>
-                  <div>
-                    <h2 className="text-sm sm:text-base font-bold text-white leading-tight">
+                  <div className="min-w-0">
+                    <h2 className="text-sm sm:text-base font-bold text-white leading-tight truncate">
                       {activeTab === "3d"
                         ? "Estación de Trabajo 3D"
                         : "Resumen Profesional"}
                     </h2>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-slate-400 truncate">
                       Ingeniero en Sistemas · UMSS
                     </p>
                   </div>
@@ -206,14 +206,14 @@ const Hero = () => {
                 <div
                   role="tablist"
                   aria-label="Cambiar vista de tarjeta principal"
-                  className="inline-flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800"
+                  className="inline-flex items-center justify-center w-full sm:w-auto bg-slate-950 p-1 rounded-xl border border-slate-800"
                 >
                   <button
                     type="button"
                     role="tab"
                     aria-selected={activeTab === "3d"}
                     onClick={() => setActiveTab("3d")}
-                    className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                    className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
                       activeTab === "3d"
                         ? "bg-blue-600 text-white"
                         : "text-slate-400 hover:text-white"
@@ -227,7 +227,7 @@ const Hero = () => {
                     role="tab"
                     aria-selected={activeTab === "summary"}
                     onClick={() => setActiveTab("summary")}
-                    className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                    className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
                       activeTab === "summary"
                         ? "bg-blue-600 text-white"
                         : "text-slate-400 hover:text-white"
@@ -241,7 +241,7 @@ const Hero = () => {
 
               {/* Contenido dinámico según pestaña activa */}
               {activeTab === "3d" ? (
-                <div className="relative h-72 sm:h-80 w-full rounded-xl bg-slate-950 border border-slate-800 overflow-hidden">
+                <div className="relative h-64 sm:h-80 w-full rounded-xl bg-slate-950 border border-slate-800 overflow-hidden">
                   {is3DReady && !isExpanded3D ? (
                     <Suspense
                       fallback={
@@ -271,19 +271,22 @@ const Hero = () => {
                   )}
 
                   {/* Selector interactivo de escena 3D + Botón Pantalla Completa */}
-                  <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between gap-2 pointer-events-none">
+                  <div className="absolute top-2 left-2 right-2 flex items-center justify-between gap-1.5 pointer-events-none">
                     <div
                       role="group"
                       aria-label="Cambiar escena del estudio 3D"
-                      className="pointer-events-auto inline-flex items-center gap-1 bg-slate-900/90 border border-slate-700/80 p-1 rounded-lg backdrop-blur-sm"
+                      className="pointer-events-auto inline-flex items-center gap-0.5 sm:gap-1 bg-slate-900/90 border border-slate-700/80 p-1 rounded-lg backdrop-blur-sm max-w-[calc(100%-2.25rem)] overflow-x-auto"
                     >
-                      <Monitor size={12} className="text-blue-400 ml-1.5 mr-0.5" />
+                      <Monitor
+                        size={12}
+                        className="hidden sm:inline-block text-blue-400 ml-1.5 mr-0.5 flex-shrink-0"
+                      />
                       {SCREEN_MODES.map((m) => (
                         <button
                           key={m.id}
                           type="button"
                           onClick={() => setScreenMode(m.id)}
-                          className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
+                          className={`px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-medium whitespace-nowrap transition-colors ${
                             screenMode === m.id
                               ? "bg-blue-600 text-white"
                               : "text-slate-300 hover:text-white"
@@ -299,17 +302,17 @@ const Hero = () => {
                       onClick={() => setIsExpanded3D(true)}
                       aria-label="Ampliar estudio 3D en pantalla completa"
                       title="Ampliar estudio 3D"
-                      className="pointer-events-auto p-1.5 rounded-lg bg-slate-900/90 hover:bg-blue-600 border border-slate-700/80 text-slate-200 hover:text-white transition-colors"
+                      className="pointer-events-auto p-1.5 rounded-lg bg-slate-900/90 hover:bg-blue-600 border border-slate-700/80 text-slate-200 hover:text-white transition-colors flex-shrink-0"
                     >
                       <Maximize2 size={13} />
                     </button>
                   </div>
 
                   {/* Controles inferiores de rotación 3D */}
-                  <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between gap-2 pointer-events-none">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-700/80 text-[11px] font-medium text-slate-300 backdrop-blur-sm">
-                      <Move3d size={12} className="text-blue-400" />
-                      <span>Arrastra o haz zoom</span>
+                  <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between gap-1.5 pointer-events-none">
+                    <span className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-700/80 text-[10px] sm:text-[11px] font-medium text-slate-300 backdrop-blur-sm truncate">
+                      <Move3d size={12} className="text-blue-400 flex-shrink-0" />
+                      <span className="truncate">Arrastra o haz zoom</span>
                     </span>
 
                     <button
@@ -325,7 +328,7 @@ const Hero = () => {
                           ? "Pausar rotación automática"
                           : "Activar rotación automática"
                       }
-                      className="pointer-events-auto inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-[11px] font-medium text-slate-200 transition-colors"
+                      className="pointer-events-auto inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-lg bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-[10px] sm:text-[11px] font-medium text-slate-200 transition-colors flex-shrink-0"
                     >
                       {autoRotate ? (
                         <>
@@ -443,37 +446,37 @@ const Hero = () => {
           role="dialog"
           aria-modal="true"
           aria-label="Vista ampliada del Estudio 3D"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/85 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md"
           onClick={() => setIsExpanded3D(false)}
         >
           <div
-            className="relative w-full max-w-5xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+            className="relative w-full max-w-5xl max-h-[92vh] bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Cabecera del modal 3D */}
-            <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 border-b border-slate-800 bg-slate-900">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white">
+            <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-5 py-3.5 sm:py-4 border-b border-slate-800 bg-slate-900">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white flex-shrink-0">
                   <Box size={18} />
                 </div>
-                <div>
-                  <h3 className="text-base font-bold text-white leading-tight">
+                <div className="min-w-0">
+                  <h3 className="text-sm sm:text-base font-bold text-white leading-tight truncate">
                     Estudio 3D Interactivo · Alta Definición (2K PBR)
                   </h3>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-slate-400 hidden sm:block">
                     Usa la rueda del mouse para hacer zoom sobre los monitores y componentes
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
                 <div className="inline-flex items-center gap-1 bg-slate-950 border border-slate-800 p-1 rounded-xl">
                   {SCREEN_MODES.map((m) => (
                     <button
                       key={m.id}
                       type="button"
                       onClick={() => setScreenMode(m.id)}
-                      className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors ${
+                      className={`px-2 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-semibold whitespace-nowrap transition-colors ${
                         screenMode === m.id
                           ? "bg-blue-600 text-white"
                           : "text-slate-400 hover:text-white"
@@ -484,38 +487,40 @@ const Hero = () => {
                   ))}
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => setAutoRotate((prev) => !prev)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-medium text-slate-200 transition-colors"
-                >
-                  {autoRotate ? (
-                    <>
-                      <Pause size={13} className="text-amber-400" />
-                      <span>Pausar giro</span>
-                    </>
-                  ) : (
-                    <>
-                      <RotateCw size={13} className="text-emerald-400" />
-                      <span>Auto-girar</span>
-                    </>
-                  )}
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setAutoRotate((prev) => !prev)}
+                    className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-medium text-slate-200 transition-colors"
+                  >
+                    {autoRotate ? (
+                      <>
+                        <Pause size={13} className="text-amber-400" />
+                        <span className="hidden xs:inline">Pausar giro</span>
+                      </>
+                    ) : (
+                      <>
+                        <RotateCw size={13} className="text-emerald-400" />
+                        <span className="hidden xs:inline">Auto-girar</span>
+                      </>
+                    )}
+                  </button>
 
-                <button
-                  type="button"
-                  onClick={() => setIsExpanded3D(false)}
-                  aria-label="Cerrar vista ampliada"
-                  title="Cerrar (Esc)"
-                  className="p-2 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white transition-colors"
-                >
-                  <X size={18} />
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsExpanded3D(false)}
+                    aria-label="Cerrar vista ampliada"
+                    title="Cerrar (Esc)"
+                    className="p-2 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white transition-colors"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
               </div>
             </div>
 
             {/* Lienzo 3D amplio */}
-            <div className="relative w-full h-[65vh] min-h-[420px] bg-slate-950">
+            <div className="relative w-full h-[55vh] sm:h-[65vh] min-h-[260px] sm:min-h-[400px] bg-slate-950">
               <Suspense
                 fallback={
                   <div className="w-full h-full flex items-center justify-center text-slate-400 text-sm">
@@ -538,7 +543,7 @@ const Hero = () => {
         onClick={() => scrollToSection("about")}
         aria-label="Desplazarse a la sección Sobre mí"
         title="Ver más información"
-        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-slate-300 hover:text-white transition-colors"
+        className="absolute bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-slate-300 hover:text-white transition-colors"
       >
         <span className="text-xs font-medium tracking-wide">Conóceme</span>
         <ChevronDown className="animate-bounce" size={20} />

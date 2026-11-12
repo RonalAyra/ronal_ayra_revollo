@@ -77,7 +77,7 @@ const TechSkillItem = ({ item }: Props) => {
       {isHovered && (
         <div
           role="tooltip"
-          className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap z-50 shadow-lg pointer-events-none"
+          className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-max max-w-[210px] sm:max-w-xs bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs font-medium px-3 py-1.5 rounded-lg whitespace-normal text-center z-50 shadow-lg pointer-events-none"
         >
           {getTechDescription(item)}
         </div>

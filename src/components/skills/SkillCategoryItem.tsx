@@ -12,17 +12,17 @@ const SkillCategoryItem = ({ item }: Props) => {
   );
 
   return (
-    <div className="h-full flex flex-col justify-between bg-white dark:bg-slate-800/90 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 border border-slate-200/80 dark:border-slate-700/80">
+    <div className="h-full flex flex-col justify-between bg-white dark:bg-slate-800/90 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-200 border border-slate-200/80 dark:border-slate-700/80">
       <div>
-        <div className="flex items-center justify-between gap-3 mb-5 pb-4 border-b border-slate-200/70 dark:border-slate-700/70">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between gap-2.5 mb-5 pb-4 border-b border-slate-200/70 dark:border-slate-700/70">
+          <div className="flex items-center gap-3 min-w-0">
             <div
               className={`w-10 h-10 rounded-xl ${color} flex items-center justify-center text-white flex-shrink-0 shadow-sm`}
             >
               <Icon size={20} />
             </div>
-            <div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white leading-snug">
+            <div className="min-w-0">
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug truncate">
                 {title}
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400">
@@ -31,7 +31,7 @@ const SkillCategoryItem = ({ item }: Props) => {
               </p>
             </div>
           </div>
-          <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-700/80 text-slate-700 dark:text-slate-300 tabular-nums">
+          <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-700/80 text-slate-700 dark:text-slate-300 tabular-nums whitespace-nowrap flex-shrink-0">
             Prom. {averageLevel}%
           </span>
         </div>

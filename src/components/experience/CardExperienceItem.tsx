@@ -12,17 +12,17 @@ const CardExperienceItem = ({ item, index, onSelect }: Props) => {
   const [startDate, endDate] = item.period.split(/\s*[-–]\s*/);
 
   return (
-    <div className="relative pl-8 lg:pl-0 pb-8 last:pb-0 group">
+    <div className="relative pl-6 sm:pl-8 lg:pl-0 pb-8 last:pb-0 group">
       {/* Línea vertical de la línea de tiempo */}
       <div
         aria-hidden="true"
-        className="absolute left-3 lg:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700 lg:-translate-x-1/2 group-last:bottom-auto group-last:h-6"
+        className="absolute left-2 sm:left-3 lg:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700 lg:-translate-x-1/2 group-last:bottom-auto group-last:h-6"
       />
 
       {/* Indicador circular */}
       <div
         aria-hidden="true"
-        className="absolute left-3 lg:left-1/2 top-6 -translate-x-1/2 z-10 w-3.5 h-3.5 rounded-full bg-blue-600 ring-4 ring-white dark:ring-slate-900 group-hover:scale-125 transition-transform duration-200"
+        className="absolute left-2 sm:left-3 lg:left-1/2 top-6 -translate-x-1/2 z-10 w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full bg-blue-600 ring-4 ring-white dark:ring-slate-900 group-hover:scale-125 transition-transform duration-200"
       />
 
       <div
@@ -31,10 +31,10 @@ const CardExperienceItem = ({ item, index, onSelect }: Props) => {
       >
         {/* Tarjeta principal */}
         <div
-          className={`w-full lg:w-1/2 ${isEven ? "lg:pl-8" : "lg:pr-8"
+          className={`w-full lg:w-1/2 min-w-0 ${isEven ? "lg:pl-8" : "lg:pr-8"
             }`}
         >
-          <article className="bg-white dark:bg-slate-800/90 rounded-2xl p-5 sm:p-6 border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-md hover:border-blue-400/60 dark:hover:border-blue-500/60 transition-all duration-200">
+          <article className="bg-white dark:bg-slate-800/90 rounded-2xl p-4 sm:p-6 border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-md hover:border-blue-400/60 dark:hover:border-blue-500/60 transition-all duration-200">
             <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-700 dark:bg-blue-950/70 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/60">
                 <Calendar size={13} />
@@ -80,20 +80,20 @@ const CardExperienceItem = ({ item, index, onSelect }: Props) => {
               </div>
             </div>
 
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-snug mb-1">
+            <h3 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white leading-snug mb-1">
               {item.position}
             </h3>
 
-            <div className="flex items-center gap-1.5 text-sm font-semibold text-slate-600 dark:text-slate-300 mb-4">
-              <Building2 size={15} className="text-blue-600 dark:text-blue-400 flex-shrink-0" />
-              <span>{item.company}</span>
+            <div className="flex items-start sm:items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 mb-4">
+              <Building2 size={15} className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5 sm:mt-0" />
+              <span className="break-words">{item.company}</span>
             </div>
 
             {item.caseStudy?.demoCredentials && (
               <div className="mb-4 p-3 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-700/80 text-xs">
-                <div className="flex items-center justify-between gap-2 mb-1.5">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
                   <span className="inline-flex items-center gap-1.5 font-semibold text-slate-800 dark:text-slate-200">
-                    <KeyRound size={13} className="text-blue-600 dark:text-blue-400" />
+                    <KeyRound size={13} className="text-blue-600 dark:text-blue-400 flex-shrink-0" />
                     <span>Credenciales Demo (Backoffice ERP)</span>
                   </span>
                   {onSelect && (
@@ -106,7 +106,7 @@ const CardExperienceItem = ({ item, index, onSelect }: Props) => {
                     </button>
                   )}
                 </div>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-600 dark:text-slate-300 font-mono">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-600 dark:text-slate-300 font-mono break-all sm:break-normal">
                   <span>
                     Usuario:{" "}
                     <strong className="text-slate-900 dark:text-white select-all">

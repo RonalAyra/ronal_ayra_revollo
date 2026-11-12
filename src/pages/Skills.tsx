@@ -84,18 +84,18 @@ const Skills = () => {
         </div>
 
         {/* Barra de filtros en una sola fila: Select a la izquierda y Buscador a la derecha */}
-        <div className="mb-10 flex flex-row items-center justify-between gap-3 sm:gap-4 bg-white dark:bg-slate-900 p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
-          <div className="relative flex-1 sm:flex-initial sm:w-72">
+        <div className="mb-10 flex flex-row items-center justify-between gap-2 sm:gap-4 bg-white dark:bg-slate-900 p-3 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          <div className="relative flex-1 min-w-0 sm:max-w-xs">
             <Filter
-              size={15}
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-blue-600 dark:text-blue-400 pointer-events-none"
+              size={14}
+              className="absolute left-3 sm:left-3.5 top-1/2 -translate-y-1/2 text-blue-600 dark:text-blue-400 pointer-events-none"
             />
             <select
               id="skills-category-select"
               value={selectedGroup}
               onChange={(e) => setSelectedGroup(e.target.value)}
               aria-label="Filtrar habilidades por área técnica"
-              className="w-full appearance-none pl-9 pr-9 py-2.5 text-sm font-medium rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:border-blue-400 dark:hover:border-blue-500 transition-colors cursor-pointer"
+              className="w-full appearance-none pl-8 sm:pl-9 pr-7 sm:pr-9 py-2 sm:py-2.5 text-xs sm:text-sm font-medium rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:border-blue-400 dark:hover:border-blue-500 transition-colors cursor-pointer truncate"
             >
               {CATEGORY_GROUPS.map((group) => (
                 <option key={group.id} value={group.id}>
@@ -104,23 +104,23 @@ const Skills = () => {
               ))}
             </select>
             <ChevronDown
-              size={16}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+              size={15}
+              className="absolute right-2.5 sm:right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
             />
           </div>
 
-          <div className="relative flex-1 sm:flex-initial sm:w-72">
+          <div className="relative flex-1 min-w-0 sm:max-w-xs">
             <Search
-              size={16}
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+              size={15}
+              className="absolute left-3 sm:left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
             />
             <input
               type="search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar tecnología (ej. Laravel)..."
+              placeholder="Buscar tecnología..."
               aria-label="Buscar tecnología"
-              className="w-full pl-9 pr-9 py-2.5 text-sm rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400"
+              className="w-full pl-8 sm:pl-9 pr-7 sm:pr-9 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400"
             />
             {searchQuery && (
               <button
@@ -128,7 +128,7 @@ const Skills = () => {
                 onClick={() => setSearchQuery("")}
                 aria-label="Limpiar búsqueda"
                 title="Limpiar búsqueda"
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-md"
+                className="absolute right-2 sm:right-2.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-md"
               >
                 <X size={14} />
               </button>
