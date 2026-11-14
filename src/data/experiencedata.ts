@@ -235,14 +235,142 @@ export const experiences: Experience[] = [
   },
   {
     id: 3,
-    company: "Biblioteca Virtual",
-    position: "Frontend Developer (React) / Backend Developer (Laravel)",
-    period: "Octubre 2024 – Enero 2025",
+    company: "Biblioteca Digital BLUE — Plataforma de Recursos Académicos y Gestión Bibliotecaria",
+    position: "Full Stack Architect & Developer (React 18, TypeScript, Laravel 12 & PostgreSQL 16)",
+    period: "Octubre 2024 – Actualidad (Modernización & Deploy en Producción)",
+    liveUrl: "http://13.140.134.191:8087",
     description: [
-      "Desarrollo del frontend utilizando React para la gestión administrativa del sistema.",
-      "Construcción y optimización de APIs RESTful con Laravel.",
+      "Plataforma Full-Stack de biblioteca digital especializada en enfermería y ciencias de la salud (BLUE), compuesta por un catálogo público con lectura/descarga de PDFs, un backoffice administrativo con control de acceso granular (RBAC) y una API RESTful v1 en Laravel 12 sobre PostgreSQL 16.",
+      "Frontend (client) en React 18.3, TypeScript y Vite 5 con Tailwind CSS, estado global con Redux Toolkit, React Router v7 con guardias de permisos (PrivateRoute / GuestRoute), formularios validados con React Hook Form + Yup y paginación incremental con cancelación por AbortController (useResource).",
+      "Backend (server) en Laravel 12 (PHP 8.3) con arquitectura API REST (/api/v1), Form Requests dedicados, API Resources, motor común de búsqueda/ordenamiento/paginación (AppliesTableQuery) y Soft Deletes con papelera y restauración para libros y usuarios.",
+      "Seguridad y RBAC basados en Laravel Passport v13 (autenticación OAuth2 Bearer y autoprovisión de llaves) junto a Spatie Laravel Permission v6 con 24 permisos agrupados por módulos (libros, usuarios, roles, permisos), roles predefinidos (Administrador y Bibliotecario) y renderizado condicional en UI (<WithPermission />).",
+      "Gestión documental y multimedia: carga validada de portadas (hasta 5 MB: JPEG, PNG, GIF, WebP) y libros PDF (hasta 20 MB), previsualización inline (?inline=1), descarga directa con contador de descargas y seeder automático de 15 libros con portadas PNG generadas con GD.",
+      "Despliegue multi-contenedor en servidor VPS Linux (Contabo) con Docker Compose en red aislada (library_net) en el puerto 8087 conviviendo en paralelo con otros sistemas: Nginx Alpine sirviendo la SPA y /storage/ estático desde bind mount persistente (/opt/library/storage), PHP 8.3 Apache (opcache, pdo_pgsql, gd, zip) y PostgreSQL 16 Alpine.",
     ],
-    technologies: ["React", "Laravel", "MySQL", "SIAT"],
+    technologies: [
+      "React 18",
+      "TypeScript",
+      "Laravel 12",
+      "PHP 8.3",
+      "PostgreSQL 16",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "Vite 5",
+      "Laravel Passport",
+      "Spatie Permission",
+      "Docker",
+      "Nginx",
+    ],
+    caseStudy: {
+      summary:
+        "Diseñé y modernicé la Biblioteca Digital BLUE, una plataforma web Full-Stack orientada a la publicación, consulta y descarga gratuita de bibliografía especializada en enfermería. La arquitectura separa un portal público de rápida indexación y filtrado en React 18 + TypeScript de un backoffice protegido por RBAC granular con 24 permisos, respaldado por una API RESTful en Laravel 12 y PostgreSQL 16 containerizada en Docker Compose con Nginx Alpine sirviendo archivos estáticos directamente desde el host.",
+      portalUrl: "http://13.140.134.191:8087/login",
+      apiEndpoint: "http://13.140.134.191:8087/api/v1",
+      demoCredentials: {
+        user: "admin@example.com",
+        password: "admin123",
+        note: "Credenciales de Acceso al Panel Admin (DatabaseSeeder automático)",
+      },
+      repoStats: [
+        {
+          name: "Frontend (client — React + Vite)",
+          firstCommit: "12 de enero de 2026 (d878e5e)",
+          lastCommit: "12 de noviembre de 2026 (88317ef)",
+          totalCommits: "5 commits (refactor modular + producción)",
+        },
+        {
+          name: "Backend API (server — Laravel 12)",
+          firstCommit: "Enero 2026 (Migraciones Passport, Spatie & Books)",
+          lastCommit: "Noviembre 2026 (TrustProxies, PostgreSQL Seeder & Docker)",
+          totalCommits: "API REST v1 + 15 tests Feature (PHPUnit)",
+        },
+      ],
+      architectureLayers: [
+        {
+          title: "Frontend Público & Backoffice (client)",
+          items: [
+            "Core & Tooling: React 18.3 + TypeScript + Vite 5 con path aliases (@/), Tailwind CSS 3.4, Framer Motion y Lucide Icons.",
+            "Estado & Ruteo: Redux Toolkit (auth.reducer.ts), React Router DOM v7 (PrivateRoute por permisos, GuestRoute, vista 403 /unauthorized) y evento global auth:unauthorized.",
+            "Red & Formularios: Axios con interceptores Bearer y soporte automático FormData para archivos + React Hook Form + Yup (@hookform/resolvers) + React Toastify.",
+            "Patrones Reutilizables: Hook genérico useResource (paginación, ordenamiento, filtros, búsqueda) acoplado a DataTable y guardias de UI <WithPermission />.",
+          ],
+        },
+        {
+          title: "Backend API REST (server)",
+          items: [
+            "Framework & Runtime: Laravel 12 sobre PHP 8.3 + Apache con extensiones pdo_pgsql, pgsql, gd, zip, mbstring, bcmath, exif y opcache.",
+            "Autenticación & RBAC: Laravel Passport v13 (guard api, autoprovisión de llaves y cliente personal) + Spatie Laravel Permission v6 con catálogo centralizado (PermissionCatalog de 24 permisos).",
+            "Persistencia & Consultas: PostgreSQL 16 con SoftDeletes en Book y User, scopes case-insensitive (LOWER(...) LIKE), trait AppliesTableQuery con lista blanca de columnas y Form Requests con validación multimedia.",
+            "Calidad & Testing: 15 pruebas automatizadas Feature con PHPUnit cubriendo Auth, Books (CRUD, stock, papelera y PDF), Users, Roles y Permissions.",
+          ],
+        },
+        {
+          title: "DevOps e Infraestructura Cloud (Contabo VPS)",
+          items: [
+            "Orquestación: Docker Compose con red aislada (library_net) y 3 contenedores (library_postgres, library_backend, library_frontend) con límites de memoria (256MB DB, 512MB backend, 128MB Nginx) y healthchecks pg_isready.",
+            "Nginx Alpine & Storage Persistente: Proxy reverso para /api/ y /up preservando X-Forwarded-Host: $http_host (sin sobrescribir el puerto :8087 junto a trustProxies(at: '*')), entrega directa de estáticos /storage/ desde ./storage/app/public:ro y caché inmutable de /assets/.",
+            "Automatización de Despliegue: Scripts deploy.ps1 (PowerShell) y update.sh (Bash) con modo -FrontendOnly, generación segura de .env, reglas UFW para el puerto 8087 y entrypoint con auto-migración y seed condicional en base vacía.",
+          ],
+        },
+      ],
+      modules: [
+        {
+          title: "1. Catálogo Público y Visor/Descarga PDF (/)",
+          items: [
+            "Hero & Resumen Dinámico: Contadores en vivo de libros disponibles, PDFs publicados y descargas totales (/v1/books/genres).",
+            "Buscador y Filtros: Búsqueda con debounce de 350ms (título, autor, ISBN, género o descripción), filtro por categoría y ordenamiento múltiple con carga incremental ('Ver más').",
+            "Gestión Documental: Portadas servidas como estáticos desde /storage/books/covers/, lectura inline en navegador (?inline=1) y descarga directa Blob registrando downloads_count.",
+          ],
+        },
+        {
+          title: "2. Dashboard Administrativo y Métricas (/admin)",
+          items: [
+            "KPIs en Tiempo Real: Panel /v1/dashboard/stats con totales de libros, disponibles, con PDF, descargas acumuladas, stock global, alertas de stock bajo (<= 5), papelera, usuarios activos y roles/permisos.",
+            "Analítica Rápida: Top 5 de categorías con mayor volumen y listado de incorporaciones recientes protegido por permiso libro_listar.",
+          ],
+        },
+        {
+          title: "3. Gestión Integral de Libros e Inventario (/admin/book)",
+          items: [
+            "CRUD Multimedia: Alta y edición con ISBN único, editorial, año, páginas, idioma, precio, portada (máx. 5 MB) y archivo PDF (máx. 20 MB).",
+            "Stock y Papelera (Soft Delete): Ajuste rápido de inventario (add, subtract, set), consulta de eliminados (/books/trashed), restauración y borrado permanente con limpieza física de portada y PDF en disco.",
+          ],
+        },
+        {
+          title: "4. Control de Acceso RBAC y Usuarios (/admin/users y /admin/accesscontrol)",
+          items: [
+            "Administración de Usuarios: CRUD completo con búsqueda, filtro por rol o estado (activo/inactivo), papelera/restauración y bloqueo contra auto-eliminación.",
+            "Roles y Permisos Granulares: Gestión de roles y permisos filtrables por módulo, sincronización del catálogo canónico de 24 permisos y asignación de roles o permisos directos por usuario.",
+          ],
+        },
+      ],
+      milestones: [
+        {
+          period: "Enero 2026",
+          title: "Arquitectura Base React + Laravel 12",
+          items: [
+            "Diseño de esquema inicial (migraciones de Books, OAuth Passport y tablas de permisos Spatie).",
+            "Inicialización del frontend en React 18 + TypeScript + Vite y consumo modular de API v1.",
+          ],
+        },
+        {
+          period: "Febrero 2026",
+          title: "Soft Deletes, RBAC Completo y Cobertura de Pruebas",
+          items: [
+            "Incorporación de Soft Deletes en usuarios/libros, descripciones de permisos y panel unificado de Access Control.",
+            "Implementación de la suite de 15 pruebas Feature en PHPUnit para Auth, Books, Users, Roles y Permissions.",
+          ],
+        },
+        {
+          period: "Noviembre 2026",
+          title: "Seeder Multimedia, Dockerización y Despliegue en Contabo VPS",
+          items: [
+            "Refactor de servicios/filtros en React (useResource, paginación y AbortController) y BookSeeder con 15 libros, portadas PNG vía GD y PDFs de ejemplo.",
+            "Despliegue en producción sobre Docker Compose + PostgreSQL 16 + Nginx Alpine en Contabo VPS (:8087) con bind mount persistente en /opt/library/storage.",
+          ],
+        },
+      ],
+    },
   },
   {
     id: 4,
